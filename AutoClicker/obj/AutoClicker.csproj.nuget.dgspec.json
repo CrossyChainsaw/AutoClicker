@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kaan-\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj": {}
+    "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\AutoClicker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kaan-\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj": {
+    "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\AutoClicker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kaan-\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+        "projectUniqueName": "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
         "projectName": "AutoClicker",
-        "projectPath": "C:\\Users\\kaan-\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+        "projectPath": "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
         "packagesPath": "C:\\Users\\kaan-\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kaan-\\source\\repos\\AutoClicker\\AutoClicker\\obj\\",
+        "outputPath": "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
