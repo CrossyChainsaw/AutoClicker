@@ -42,7 +42,6 @@ namespace AutoClicker
             pointList.Add(new Point(0, 0));
             delayList.Add(0);
         }
-
         void CreateGroupBox()
         {
             int yLocation = GB_FirstPoint.Location.Y + verticalDistanceBetweenGroupboxes * nGroupbox;
@@ -120,7 +119,6 @@ namespace AutoClicker
 
             nGroupbox++;
         }
-
         void SavePoint(Label lbl_x, Label lbl_y, int nGroupbox)
         {
             int cursorX = Cursor.Position.X;
@@ -128,6 +126,17 @@ namespace AutoClicker
             lbl_x.Text = "x: " + cursorX;
             lbl_y.Text = "y: " + cursorY;
             pointList[nGroupbox] = new Point(cursorX, cursorY);
+        }
+        int CalculateEstimatedTime()
+        {
+            int oneLoopDuration = 0;
+            foreach (int delay in delayList)
+            {
+                oneLoopDuration += delay;
+            }
+            int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
+            int estimatedTime = oneLoopDuration * repetitions;
+            return estimatedTime;
         }
 
         // Events
@@ -139,19 +148,16 @@ namespace AutoClicker
                 clicked = false;
             }
         }
-
         private void BTN_SetLocation_Click(object sender, EventArgs e)
         {
             clicked = true;
             lbl_x_temp = LBL_X1;
             lbl_y_temp = LBL_Y1;
         }
-
         private void BTN_Add_Click(object sender, EventArgs e)
         {
             CreateGroupBox();
         }
-
         private void BTN_Start_Click(object sender, EventArgs e)
         {
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
@@ -165,11 +171,14 @@ namespace AutoClicker
                 }
             }
         }
-
         private void NUD_Delay_ValueChanged(object sender, EventArgs e)
         {
             int delay = Convert.ToInt32(NUD_Delay.Value);
             delayList[0] = delay;
+        }
+        private void NUD_Repetitions_ValueChanged(object sender, EventArgs e)
+        {
+            LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime() + "ms";
         }
     }
 }

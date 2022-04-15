@@ -40,6 +40,7 @@
             this.BTN_Add = new System.Windows.Forms.Button();
             this.NUD_Repetitions = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.LBL_EstimatedTime = new System.Windows.Forms.Label();
             this.GB_FirstPoint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Delay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Repetitions)).BeginInit();
@@ -74,7 +75,7 @@
             this.GB_FirstPoint.Controls.Add(this.BTN_SetLocation);
             this.GB_FirstPoint.Controls.Add(this.LBL_X1);
             this.GB_FirstPoint.Controls.Add(this.label1);
-            this.GB_FirstPoint.Location = new System.Drawing.Point(12, 47);
+            this.GB_FirstPoint.Location = new System.Drawing.Point(12, 74);
             this.GB_FirstPoint.Name = "GB_FirstPoint";
             this.GB_FirstPoint.Size = new System.Drawing.Size(561, 38);
             this.GB_FirstPoint.TabIndex = 2;
@@ -153,7 +154,7 @@
             // 
             // NUD_Repetitions
             // 
-            this.NUD_Repetitions.Location = new System.Drawing.Point(131, 21);
+            this.NUD_Repetitions.Location = new System.Drawing.Point(105, 23);
             this.NUD_Repetitions.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -162,21 +163,32 @@
             this.NUD_Repetitions.Name = "NUD_Repetitions";
             this.NUD_Repetitions.Size = new System.Drawing.Size(102, 27);
             this.NUD_Repetitions.TabIndex = 8;
+            this.NUD_Repetitions.ValueChanged += new System.EventHandler(this.NUD_Repetitions_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 23);
+            this.label2.Location = new System.Drawing.Point(12, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Repetitions:";
             // 
+            // LBL_EstimatedTime
+            // 
+            this.LBL_EstimatedTime.AutoSize = true;
+            this.LBL_EstimatedTime.Location = new System.Drawing.Point(12, 53);
+            this.LBL_EstimatedTime.Name = "LBL_EstimatedTime";
+            this.LBL_EstimatedTime.Size = new System.Drawing.Size(124, 20);
+            this.LBL_EstimatedTime.TabIndex = 9;
+            this.LBL_EstimatedTime.Text = "Estimated time: 0";
+            // 
             // FRM_AutoClicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(585, 450);
+            this.Controls.Add(this.LBL_EstimatedTime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NUD_Repetitions);
             this.Controls.Add(this.BTN_Add);
@@ -208,5 +220,6 @@
         private NumericUpDown NUD_Delay;
         private NumericUpDown NUD_Repetitions;
         private Label label2;
+        private Label LBL_EstimatedTime;
     }
 }
