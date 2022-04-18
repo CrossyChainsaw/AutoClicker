@@ -127,7 +127,7 @@ namespace AutoClicker
             lbl_y.Text = "y: " + cursorY;
             pointList[nGroupbox] = new Point(cursorX, cursorY);
         }
-        int CalculateEstimatedTime()
+        string CalculateEstimatedTime()
         {
             int oneLoopDuration = 0;
             foreach (int delay in delayList)
@@ -135,8 +135,27 @@ namespace AutoClicker
                 oneLoopDuration += delay;
             }
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
-            int estimatedTime = oneLoopDuration * repetitions;
-            return estimatedTime;
+            int estimatedTimeInMilliseconds = oneLoopDuration * repetitions;
+
+
+            if (estimatedTimeInMilliseconds >= 120000)
+            {
+                int estimatedTimeInMinutes = estimatedTimeInMilliseconds / 1000 / 60;
+                return estimatedTimeInMinutes + "min";
+            }
+            else if (estimatedTimeInMilliseconds > 1000)
+            {
+                int estimatedTimeInSeconds = estimatedTimeInMilliseconds / 1000;
+                return estimatedTimeInSeconds + "s";
+            }
+            else
+            {
+                return estimatedTimeInMilliseconds + "ms";
+            }
+        }
+        void SaveTextFile()
+        {
+            //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.savefiledialog?view=windowsdesktop-6.0
         }
 
         // Events
@@ -178,7 +197,7 @@ namespace AutoClicker
         }
         private void NUD_Repetitions_ValueChanged(object sender, EventArgs e)
         {
-            LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime() + "ms";
+            LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime();
         }
     }
 }
