@@ -1,7 +1,10 @@
 # Auto Clicker
 Auto Clicker is an application wherein you can simulate multiple mouse presses in a certain order. This order can be repeated multiple times inside of the application.
 
-## How to use
+## Video of me using AutoClicker
+https://user-images.githubusercontent.com/74303221/174445252-d679ab56-0c1f-41cd-80f4-f5246094db82.mp4
+
+## How to Setup
 When you run the application you are confronted with this screen.
 
 ![image](https://user-images.githubusercontent.com/74303221/173813153-67ecc707-6973-43d9-9168-23ab96d50d40.png)
