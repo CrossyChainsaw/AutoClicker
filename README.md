@@ -20,7 +20,7 @@ After you've clicked on the `Set Location` button, you click somewhere on your s
 ![image](https://user-images.githubusercontent.com/74303221/173814633-1f3b74d1-1af1-4c03-81d9-615ad14918db.png)
 
 ### Delay
-The `Delay` variable defines how long it takes for the click to actually happen. In the example below my program will wait 10 seconds, and after waiting 10 seconds the program will simulate my desired click on the given location.
+The `Delay` variable is how much time first has to pass before the action gets done. In the example below my program will wait 10 seconds, and after waiting 10 seconds the program will simulate my desired click on the given location.
 
 ![image](https://user-images.githubusercontent.com/74303221/173815165-929d2a22-ad35-4119-a0b9-1f590fecd702.png)
 
@@ -36,4 +36,7 @@ Now you can setup multiple points.
 
 ### Repetitions
 Repetitions is the amount of times the entire list of points will happen.
+
+### How to Save
+In the folder there is a SaveFile.txt this is the file everything gets saved to, but also loaded from. If you want multiple saves you manually have to extract the save to another file.
 
