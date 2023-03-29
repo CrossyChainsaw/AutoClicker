@@ -115,7 +115,7 @@ namespace AutoClicker
             };
 
             Controls.Add(groupBox);
-            
+
             // //
             _actionList.Add(new MouseAction(new Point(0, 0), 0));
 
@@ -181,7 +181,7 @@ namespace AutoClicker
 
             // //
             Controls.Add(groupBox);
-            _actionList.Add(new KeyAction(null, 0));
+            _actionList.Add(new KeyAction("", 0));
 
             _nGroupbox++;
         }
@@ -197,9 +197,9 @@ namespace AutoClicker
         string CalculateEstimatedTime()
         {
             int oneLoopDuration = 0;
-            foreach (int delay in _delayList)
+            foreach (Action action in _actionList)
             {
-                oneLoopDuration += delay;
+                oneLoopDuration += action.Delay;
             }
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
             int estimatedTimeInMilliseconds = oneLoopDuration * repetitions;
@@ -246,6 +246,10 @@ namespace AutoClicker
         }
         private void BTN_Start_Click(object sender, EventArgs e)
         {
+            if (NUD_Repetitions.Value == 0)
+            {
+                MessageBox.Show("Repetitions is 0");
+            }
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
             for (int i = 0; i < repetitions; i++)
             {
@@ -273,28 +277,39 @@ namespace AutoClicker
         {
             LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime();
         }
+        private void NUD_Repetitions_Leave(object sender, EventArgs e)
+        {
+            LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime();
+        }
         async private void BTN_Save_Click(object sender, EventArgs e)
         {
-            List<(int x, int y, int delay)> formattedList = new List<(int x, int y, int delay)>();
-            for (int i = 0; i < _pointList.Count; i++)
+
+            List<(Action a, string key, int delay, int x, int y)> formattedList = new List<(Action a, string key, int delay, int x, int y)>();
+            for (int i = 0; i < _actionList.Count; i++)
             {
-                formattedList.Add((_pointList[i].X, _pointList[i].Y, _delayList[i]));
+                formattedList.Add((_actionList[i], _actionList[i].Key, _actionList[i].Delay, _actionList[i].Point.X, _actionList[i].Point.Y));
             }
             await Data.Overwrite(formattedList);
             MessageBox.Show("DATA SAVED");
         }
         private void BTN_Load_Click(object sender, EventArgs e)
         {
-            List<(int x, int y, int delay)> data;
+            List<(Action a, string k, int d, int x, int y)> data;
             data = Data.LoadAsTupleList();
-            _pointList.Clear();
-            _delayList.Clear();
+            _actionList.Clear();
             foreach (var item in data)
             {
-                _pointList.Add(new Point(item.x, item.y));
-                _delayList.Add(item.delay);
+                if (item.a is MouseAction)
+                {
+                    _actionList.Add(new MouseAction(new Point(item.x, item.y), item.d));
+                }
+                else if (item.a is KeyAction)
+                {
+                    _actionList.Add(new KeyAction(item.k, item.d));
+                }
             }
             MessageBox.Show("DATA LOADED");
         }
+
     }
 }

@@ -86,6 +86,7 @@
             this.NUD_Repetitions.Size = new System.Drawing.Size(89, 23);
             this.NUD_Repetitions.TabIndex = 8;
             this.NUD_Repetitions.ValueChanged += new System.EventHandler(this.NUD_Repetitions_ValueChanged);
+            this.NUD_Repetitions.Leave += new System.EventHandler(this.NUD_Repetitions_Leave);
             // 
             // label2
             // 

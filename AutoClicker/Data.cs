@@ -9,37 +9,55 @@ namespace AutoClicker
     internal class Data
     {
         const string DATA_FILE = "./Resources/SaveFile.txt";
-        public static async Task Overwrite(List<(int x, int y, int delay)> data)
+        public static async Task Overwrite(List<(Action a, string key, int delay, int x, int y)> data)
         {
             string[] newData = TupleListToStringArray(data);
             await File.WriteAllLinesAsync(DATA_FILE, newData);
         }
-        public static List<(int id, int x, int y)> LoadAsTupleList()
+        public static List<(Action a, string key, int d, int x, int y)> LoadAsTupleList()
         {
-            List<(int id, int x, int y)> data = new List<(int id, int x, int y)>();
-            List<int> singleObjectData = new List<int>();
-            int count = 0;
+            List<(Action a, string key, int d, int x, int y)> data = new List<(Action a, string key, int d, int x, int y)>();
 
-            foreach (string line in System.IO.File.ReadLines(DATA_FILE))
+            List<string> singleDataLine = new List<string>() { };
+
+            int count = 0;
+            foreach (string line in File.ReadLines(DATA_FILE))
             {
                 //Debug.Log(line);
-                singleObjectData.Add(Convert.ToInt32(line));
+                singleDataLine.Add(line);
                 count++;
-                if (count == 3)
+                if (count == 5)
                 {
-                    data.Add((singleObjectData[0], singleObjectData[1], singleObjectData[2]));
-                    singleObjectData.Clear();
+                    data.Add(ReturnCorrectAction(singleDataLine[0], singleDataLine[1], singleDataLine[2], singleDataLine[3], singleDataLine[4]));
+                    singleDataLine.Clear();
                     count = 0;
                 }
             }
             return data;
         }
-        private static string[] TupleListToStringArray(List<(int id, int x, int y)> data)
+        static (Action a, string key, int d, int x, int y) ReturnCorrectAction(string a, string key, string d, string x, string y)
+        {
+            int delay = Convert.ToInt32(d);
+            int X = Convert.ToInt32(x);
+            int Y = Convert.ToInt32(y);
+
+            if (a == "AutoClicker.MouseAction")
+            {
+                return (new MouseAction(new Point(0, 0), 0), key, delay, X, Y);
+            }
+            else
+            {
+                return (new KeyAction("", 0), key, delay, X, Y);
+            }
+        }
+        private static string[] TupleListToStringArray(List<(Action a, string key, int d, int x, int y)> data)
         {
             List<string> dataInStringList = new List<string>();
-            foreach ((int id, int x, int y) entry in data)
+            foreach ((Action a, string k, int d, int x, int y) entry in data)
             {
-                dataInStringList.Add(entry.id.ToString());
+                dataInStringList.Add(entry.a.ToString());
+                dataInStringList.Add(entry.k.ToString());
+                dataInStringList.Add(entry.d.ToString());
                 dataInStringList.Add(entry.x.ToString());
                 dataInStringList.Add(entry.y.ToString());
             }

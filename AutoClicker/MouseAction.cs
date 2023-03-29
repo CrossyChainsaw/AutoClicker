@@ -13,6 +13,7 @@ namespace AutoClicker
         {
             Point = point;
             Delay = delay;
+            Key = ""; // unused data
         }
     }
 }
