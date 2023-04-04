@@ -18,7 +18,7 @@ namespace AutoClicker
 
         // Fields
         int gbx = 10;
-        int gby = 35;
+        int gby = 47;
         bool _clicked = false;
         int _nGroupbox = 0;
         int _nTemp;
@@ -118,7 +118,7 @@ namespace AutoClicker
                 _lbl_x_temp = lbl_x;
                 _lbl_y_temp = lbl_y;
                 int nPoint = Convert.ToInt32(lbl_point.Text.Replace("Point ", "").Replace(":", ""));
-                _nTemp = nPoint - 1;
+                _nTemp = nPoint;
             };
 
 
