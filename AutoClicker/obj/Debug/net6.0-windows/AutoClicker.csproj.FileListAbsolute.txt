@@ -32,3 +32,4 @@ C:\Users\kaan-\source\repos\C#\AutoClicker\AutoClicker\obj\Debug\net6.0-windows\
 C:\Users\kaan-\source\repos\C#\AutoClicker\AutoClicker\obj\Debug\net6.0-windows\AutoClicker.pdb
 C:\Users\kaan-\source\repos\C#\AutoClicker\AutoClicker\obj\Debug\net6.0-windows\AutoClicker.genruntimeconfig.cache
 C:\Users\kaan-\source\repos\C#\AutoClicker\AutoClicker\obj\Debug\net6.0-windows\ref\AutoClicker.dll
+C:\Users\kaan-\source\repos\C#\AutoClicker\AutoClicker\obj\Debug\net6.0-windows\AutoClicker.Properties.Resources.resources
