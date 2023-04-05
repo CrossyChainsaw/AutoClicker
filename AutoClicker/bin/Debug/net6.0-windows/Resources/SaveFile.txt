@@ -58,8 +58,8 @@ AutoClicker.MouseAction
 2500
 84
 51
-AutoClicker.MouseAction
-
-0
+AutoClicker.KeyAction
+^(V)
+250
 0
 0
