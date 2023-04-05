@@ -139,7 +139,101 @@ namespace AutoClicker
             _nAction++;
             _nGroupbox++;
         }
-        void CreateGroupBox_ButtonPress()
+        void CreateGroupBox_MouseClick(int x, int y, int delay)
+        {
+            // Local Variables
+            Action actionReference = new MouseAction(new Point(x, y), delay);
+
+            // GROUPBOX DESIGN STUFF    
+            int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
+            int xLocation = gbx;
+
+            GroupBox groupBox = new GroupBox();
+            groupBox.Location = new Point(xLocation, yLocation);
+            groupBox.Size = new Size(610, 38);
+            groupBox.Text = "";
+
+            Label lbl_point = new Label();
+            Label lbl_x = new Label();
+            Label lbl_y = new Label();
+            Label lbl_delay = new Label();
+            NumericUpDown nud_delay = new NumericUpDown();
+            Label lbl_ms = new Label();
+            Button btn_SetLocation = new Button();
+            Button btn_del = new Button();
+
+            groupBox.Controls.Add(lbl_point);
+            groupBox.Controls.Add(lbl_x);
+            groupBox.Controls.Add(lbl_y);
+            groupBox.Controls.Add(lbl_delay);
+            groupBox.Controls.Add(nud_delay);
+            groupBox.Controls.Add(lbl_ms);
+            groupBox.Controls.Add(btn_SetLocation);
+            groupBox.Controls.Add(btn_del);
+
+            lbl_point.Location = new Point(3, 13);
+            lbl_point.Text = "Point " + _nGroupbox + ":";
+            lbl_point.Size = new Size(57, 20);
+
+            lbl_x.Location = new Point(66, 13);
+            lbl_x.Text = "x: " + x;
+            lbl_x.AutoSize = true;
+
+            lbl_y.Location = new Point(119, 13);
+            lbl_y.Text = "y: " + y;
+            lbl_y.AutoSize = true;
+
+            lbl_delay.Location = new Point(236, 13);
+            lbl_delay.Text = "delay:";
+            lbl_delay.AutoSize = true;
+
+            nud_delay.Location = new Point(284, 11);
+            nud_delay.Size = new Size(102, 27);
+            nud_delay.Minimum = 0;
+            nud_delay.Maximum = 1000000000;
+            nud_delay.Value = delay; // Extra line
+            nud_delay.ValueChanged += (sender, e) =>
+            {
+                int delay = Convert.ToInt32(nud_delay.Value);
+                actionReference.SetDelay(delay);
+            };
+
+            lbl_ms.Location = new Point(387, 13);
+            lbl_ms.Text = "ms";
+            lbl_ms.AutoSize = true;
+
+            btn_SetLocation.Location = new Point(447, 10);
+            btn_SetLocation.Text = "Set Location";
+            btn_SetLocation.Size = new Size(114, 24);
+            btn_SetLocation.Cursor = Cursors.Hand;
+            btn_SetLocation.Click += (sender, e) =>
+            {
+                _clicked = true;
+                _lbl_x_temp = lbl_x;
+                _lbl_y_temp = lbl_y;
+                _actionReference = actionReference;
+            };
+
+            btn_del.Size = new Size(40, 27);
+            btn_del.Location = new Point(569, 9);
+            btn_del.Text = "DEL";
+            btn_del.BackColor = Color.Red;
+            btn_del.Click += (sender, e) =>
+            {
+                Controls.Remove(groupBox);
+                _groupBoxList.Remove(groupBox);
+                _actionList.Remove(actionReference);
+            };
+
+            // //
+            Controls.Add(groupBox);
+            _actionList.Add(actionReference);
+            _groupBoxList.Add(groupBox);
+
+            _nAction++;
+            _nGroupbox++;
+        }
+        void CreateGroupBox_KeyPress()
         {
             // Variables
             Action actionReference = new KeyAction("", 0);
@@ -155,6 +249,7 @@ namespace AutoClicker
             groupBox.Name = "GB" + _nAction;
 
             Label lbl_point = new Label();
+            Label lbl_key = new Label();
             ComboBox cmb_keys = new ComboBox();
             Label lbl_delay = new Label();
             NumericUpDown nud_delay = new NumericUpDown();
@@ -162,6 +257,7 @@ namespace AutoClicker
             Button btn_del = new Button();
 
             groupBox.Controls.Add(lbl_point);
+            groupBox.Controls.Add(lbl_key);
             groupBox.Controls.Add(cmb_keys);
             groupBox.Controls.Add(lbl_delay);
             groupBox.Controls.Add(nud_delay);
@@ -171,6 +267,10 @@ namespace AutoClicker
             lbl_point.Location = new Point(3, 13);
             lbl_point.Text = "Button " + _nGroupbox + ":";
             lbl_point.Size = new Size(57, 20);
+
+            lbl_key.Location = new Point(66, 13);
+            lbl_key.Text = "";
+            lbl_key.AutoSize = true;
 
             lbl_delay.Location = new Point(236, 13);
             lbl_delay.Text = "delay:";
@@ -198,6 +298,96 @@ namespace AutoClicker
                 int nPoint = Convert.ToInt32(lbl_point.Text.Replace("Button ", "").Replace(":", ""));
                 int nDelay = nPoint - 1;
                 actionReference.SetKey(cmb_keys.SelectedValue.ToString());
+                lbl_key.Text = cmb_keys.SelectedValue.ToString();
+            };
+
+            btn_del.Size = new Size(40, 27);
+            btn_del.Location = new Point(569, 9);
+            btn_del.Text = "DEL";
+            btn_del.BackColor = Color.Red;
+            btn_del.Click += (sender, e) =>
+            {
+                Controls.Remove(groupBox);
+                _groupBoxList.Remove(groupBox);
+                _actionList.Remove(actionReference);
+            };
+
+            // other shit
+            Controls.Add(groupBox);
+            _groupBoxList.Add(groupBox);
+            _actionList.Add(actionReference);
+
+            // just ignore
+            _nAction++;
+            _nGroupbox++;
+        }
+        void CreateGroupBox_KeyPress(string key, int delay)
+        {
+            // Variables
+            Action actionReference = new KeyAction(key, delay);
+
+            // GROUPBOX DESIGN
+            int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
+            int xLocation = gbx;
+
+            GroupBox groupBox = new GroupBox();
+            groupBox.Location = new Point(xLocation, yLocation);
+            groupBox.Size = new Size(610, 38); //561 38
+            groupBox.Text = "";
+            groupBox.Name = "GB" + _nAction;
+
+            Label lbl_point = new Label();
+            Label lbl_key = new Label();
+            ComboBox cmb_keys = new ComboBox();
+            Label lbl_delay = new Label();
+            NumericUpDown nud_delay = new NumericUpDown();
+            Label lbl_ms = new Label();
+            Button btn_del = new Button();
+
+            groupBox.Controls.Add(lbl_point);
+            groupBox.Controls.Add(lbl_key);
+            groupBox.Controls.Add(cmb_keys);
+            groupBox.Controls.Add(lbl_delay);
+            groupBox.Controls.Add(nud_delay);
+            groupBox.Controls.Add(lbl_ms);
+            groupBox.Controls.Add(btn_del);
+
+            lbl_point.Location = new Point(3, 13);
+            lbl_point.Text = "Button " + _nGroupbox + ":";
+            lbl_point.Size = new Size(57, 20);
+
+            lbl_key.Location = new Point(66, 13);
+            lbl_key.Text = key;
+            lbl_key.AutoSize = true;
+
+            lbl_delay.Location = new Point(236, 13);
+            lbl_delay.Text = "delay:";
+            lbl_delay.AutoSize = true;
+
+            nud_delay.Location = new Point(284, 11);
+            nud_delay.Size = new Size(102, 27);
+            nud_delay.Minimum = 0;
+            nud_delay.Maximum = 1000000000;
+            nud_delay.Value = delay; // Extra line
+            nud_delay.ValueChanged += (sender, e) =>
+            {
+                int delay = Convert.ToInt32(nud_delay.Value);
+                actionReference.SetDelay(delay);
+            };
+
+            lbl_ms.Location = new Point(387, 13);
+            lbl_ms.Text = "ms";
+            lbl_ms.AutoSize = true;
+
+            cmb_keys.Location = new Point(447, 11);
+            cmb_keys.Size = new Size(114, 28);
+            cmb_keys.DataSource = new KeyAction(null, 0).AllKeyStrings;
+            cmb_keys.SelectedIndexChanged += (sender, e) =>
+            {
+                int nPoint = Convert.ToInt32(lbl_point.Text.Replace("Button ", "").Replace(":", ""));
+                int nDelay = nPoint - 1;
+                actionReference.SetKey(cmb_keys.SelectedValue.ToString());
+                lbl_key.Text = cmb_keys.SelectedValue.ToString();
             };
 
             btn_del.Size = new Size(40, 27);
@@ -271,7 +461,7 @@ namespace AutoClicker
         }
         private void BTN_AddButtonPress_Click(object sender, EventArgs e)
         {
-            CreateGroupBox_ButtonPress();
+            CreateGroupBox_KeyPress();
         }
         private void BTN_Start_Click(object sender, EventArgs e)
         {
@@ -318,6 +508,10 @@ namespace AutoClicker
         }
         private void BTN_Load_Click(object sender, EventArgs e)
         {
+            Load2();
+        }
+        void Load()
+        {
             List<(Action a, string k, int d, int x, int y)> data;
             data = Data.LoadAsTupleList();
             _actionList.Clear();
@@ -334,7 +528,26 @@ namespace AutoClicker
             }
             MessageBox.Show("DATA LOADED");
         }
-
+        void Load2()
+        {
+            List<(Action a, string k, int d, int x, int y)> data;
+            data = Data.LoadAsTupleList();
+            _actionList.Clear();
+            foreach (var item in data)
+            {
+                if (item.a is MouseAction)
+                {
+                    CreateGroupBox_MouseClick(item.x, item.y, item.d);
+                    //_actionList.Add(new MouseAction(new Point(item.x, item.y), item.d));
+                }
+                else if (item.a is KeyAction)
+                {
+                    CreateGroupBox_KeyPress(item.k, item.d);
+                    //_actionList.Add(new KeyAction(item.k, item.d));
+                }
+            }
+            MessageBox.Show("DATA LOADED");
+        }
     }
 }
 
