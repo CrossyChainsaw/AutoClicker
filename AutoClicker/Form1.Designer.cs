@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_AutoClicker));
             this.BTN_Start = new System.Windows.Forms.Button();
             this.BTN_Add = new System.Windows.Forms.Button();
             this.NUD_Repetitions = new System.Windows.Forms.NumericUpDown();
@@ -138,6 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(685, 338);
             this.Controls.Add(this.BTN_AddButtonPress);
             this.Controls.Add(this.BTN_Load);
@@ -147,6 +149,7 @@
             this.Controls.Add(this.NUD_Repetitions);
             this.Controls.Add(this.BTN_Add);
             this.Controls.Add(this.BTN_Start);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FRM_AutoClicker";
             this.Text = "Auto Clicker";
