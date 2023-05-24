@@ -1,0 +1,15 @@
+AutoClicker.KeyAction
+VK_B
+0
+0
+0
+AutoClicker.KeyAction
+ESCAPE
+0
+0
+0
+AutoClicker.KeyAction
+VK_C
+0
+0
+0

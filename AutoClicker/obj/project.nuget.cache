@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "u+rIycnLldsF9bcjd2pQzqxTODzEDkSHAQSRM3L+XO3aK4vUnz/tw8YKoTRWbUwuDp2Mebig732KtuOe85OWmQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kaan-\\source\\repos\\C#\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kaan-\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'InputSimulator 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "InputSimulator",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
+}
