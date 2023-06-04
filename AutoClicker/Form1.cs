@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using WindowsInput;
 using WindowsInput.Native;
+using System.Diagnostics;
 
 namespace AutoClicker
 {
@@ -217,15 +218,6 @@ namespace AutoClicker
                 _actionList.Remove(actionReference);
             };
         }
-        void SavePoint(Label lbl_x, Label lbl_y, Action nAction)
-        {
-            int cursorX = Cursor.Position.X;
-            int cursorY = Cursor.Position.Y;
-            lbl_x.Text = "x: " + cursorX;
-            lbl_y.Text = "y: " + cursorY;
-
-            nAction.SetPoint(new Point(cursorX, cursorY));
-        }
         string CalculateEstimatedTime()
         {
             int oneLoopDuration = 0;
@@ -251,24 +243,6 @@ namespace AutoClicker
             {
                 return estimatedTimeInMilliseconds + "ms";
             }
-        }
-        void LoadData()
-        {
-            List<(Action a, VirtualKeyCode k, int d, int x, int y)> data;
-            data = Data.LoadAsTupleList();
-            _actionList.Clear();
-            foreach (var item in data)
-            {
-                if (item.a is MouseAction)
-                {
-                    CreateGroupBox_MouseClick(item.x, item.y, item.d);
-                }
-                else if (item.a is KeyAction)
-                {
-                    CreateGroupBox_KeyPress(item.k, item.d);
-                }
-            }
-            MessageBox.Show("DATA LOADED");
         }
         void LoadCoolSkin()
         {
@@ -296,6 +270,15 @@ namespace AutoClicker
             {
                 SavePoint(_lbl_x_temp, _lbl_y_temp, _actionReference);
                 _clicked = false;
+            }
+            void SavePoint(Label lbl_x, Label lbl_y, Action nAction)
+            {
+                int cursorX = Cursor.Position.X;
+                int cursorY = Cursor.Position.Y;
+                lbl_x.Text = "x: " + cursorX;
+                lbl_y.Text = "y: " + cursorY;
+
+                nAction.SetPoint(new Point(cursorX, cursorY));
             }
         }
         private void BTN_Add_Click(object sender, EventArgs e)
@@ -363,7 +346,42 @@ namespace AutoClicker
         }
         private void BTN_Load_Click(object sender, EventArgs e)
         {
-            LoadData();
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "./";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+                }
+            }
+            LoadData(filePath);
+
+            void LoadData(string path)
+            {
+                List<(Action a, VirtualKeyCode k, int d, int x, int y)> data;
+                data = Data.LoadAsTupleList(path);
+                _actionList.Clear();
+                foreach (var item in data)
+                {
+                    if (item.a is MouseAction)
+                    {
+                        CreateGroupBox_MouseClick(item.x, item.y, item.d);
+                    }
+                    else if (item.a is KeyAction)
+                    {
+                        CreateGroupBox_KeyPress(item.k, item.d);
+                    }
+                }
+                MessageBox.Show("DATA LOADED");
+            }
         }
 
         private void LBL_Repetitions_Click(object sender, EventArgs e)
@@ -380,11 +398,15 @@ namespace AutoClicker
             stop = true;
         }
 
+        private void BTN_Save_As_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Work in progress...");
+        }
     }
 }
 
 /*
  * on action delete
  * check for every action
- * sex btn name to current action
+ * set btn name to current action
  */

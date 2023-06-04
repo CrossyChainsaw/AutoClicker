@@ -36,6 +36,27 @@ namespace AutoClicker
             }
             return data;
         }
+        public static List<(Action a, VirtualKeyCode key, int d, int x, int y)> LoadAsTupleList(string path)
+        {
+            List<(Action a, VirtualKeyCode key, int d, int x, int y)> data = new List<(Action a, VirtualKeyCode key, int d, int x, int y)>();
+
+            List<string> singleDataLine = new List<string>() { };
+
+            int count = 0;
+            foreach (string line in File.ReadLines(path))
+            {
+                //Debug.Log(line);
+                singleDataLine.Add(line);
+                count++;
+                if (count == 5)
+                {
+                    data.Add(ReturnCorrectAction(singleDataLine[0], ConvertStringToKey(singleDataLine[1]), singleDataLine[2], singleDataLine[3], singleDataLine[4]));
+                    singleDataLine.Clear();
+                    count = 0;
+                }
+            }
+            return data;
+        }
         static VirtualKeyCode ConvertStringToKey(string key)
         {
             // covert string to keys

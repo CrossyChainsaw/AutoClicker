@@ -37,6 +37,7 @@
             this.BTN_Save = new System.Windows.Forms.Button();
             this.BTN_Load = new System.Windows.Forms.Button();
             this.BTN_AddButtonPress = new System.Windows.Forms.Button();
+            this.BTN_Save_As = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Repetitions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +104,7 @@
             // BTN_Save
             // 
             this.BTN_Save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Save.Location = new System.Drawing.Point(508, 17);
+            this.BTN_Save.Location = new System.Drawing.Point(596, 17);
             this.BTN_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTN_Save.Name = "BTN_Save";
             this.BTN_Save.Size = new System.Drawing.Size(82, 23);
@@ -115,7 +116,7 @@
             // BTN_Load
             // 
             this.BTN_Load.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Load.Location = new System.Drawing.Point(596, 17);
+            this.BTN_Load.Location = new System.Drawing.Point(508, 17);
             this.BTN_Load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BTN_Load.Name = "BTN_Load";
             this.BTN_Load.Size = new System.Drawing.Size(82, 23);
@@ -136,12 +137,25 @@
             this.BTN_AddButtonPress.UseVisualStyleBackColor = true;
             this.BTN_AddButtonPress.Click += new System.EventHandler(this.BTN_AddButtonPress_Click);
             // 
+            // BTN_Save_As
+            // 
+            this.BTN_Save_As.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTN_Save_As.Location = new System.Drawing.Point(684, 17);
+            this.BTN_Save_As.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BTN_Save_As.Name = "BTN_Save_As";
+            this.BTN_Save_As.Size = new System.Drawing.Size(82, 23);
+            this.BTN_Save_As.TabIndex = 13;
+            this.BTN_Save_As.Text = "Save As...";
+            this.BTN_Save_As.UseVisualStyleBackColor = true;
+            this.BTN_Save_As.Click += new System.EventHandler(this.BTN_Save_As_Click);
+            // 
             // FRM_AutoClicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(690, 338);
+            this.ClientSize = new System.Drawing.Size(785, 338);
+            this.Controls.Add(this.BTN_Save_As);
             this.Controls.Add(this.BTN_AddButtonPress);
             this.Controls.Add(this.BTN_Load);
             this.Controls.Add(this.BTN_Save);
@@ -170,5 +184,6 @@
         private Button BTN_Save;
         private Button BTN_Load;
         private Button BTN_AddButtonPress;
+        private Button BTN_Save_As;
     }
 }
