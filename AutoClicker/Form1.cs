@@ -89,20 +89,9 @@ namespace AutoClicker
             lbl_y.Text = "y: " + y;
             lbl_y.AutoSize = true;
 
-            lbl_delay.Location = new Point(236, 13);
-            lbl_delay.Text = "delay:";
-            lbl_delay.AutoSize = true;
+            CreateDelayLabel(lbl_delay);
 
-            nud_delay.Location = new Point(284, 11);
-            nud_delay.Size = new Size(102, 27);
-            nud_delay.Minimum = 0;
-            nud_delay.Maximum = 1000000000;
-            nud_delay.Value = delay; // Extra line
-            nud_delay.ValueChanged += (sender, e) =>
-            {
-                int delay = Convert.ToInt32(nud_delay.Value);
-                actionReference.SetDelay(delay);
-            };
+            CreateDelayNumericUpDown(nud_delay, delay, actionReference);
 
             lbl_ms.Location = new Point(387, 13);
             lbl_ms.Text = "ms";
@@ -120,17 +109,7 @@ namespace AutoClicker
                 _actionReference = actionReference;
             };
 
-            btn_del.Size = new Size(40, 27);
-            btn_del.Location = new Point(569, 9);
-            btn_del.Text = "";
-            btn_del.BackgroundImage = Properties.Resources.TrashIcon;
-            btn_del.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_del.Click += (sender, e) =>
-            {
-                Controls.Remove(groupBox);
-                _groupBoxList.Remove(groupBox);
-                _actionList.Remove(actionReference);
-            };
+            CreateDeleteButton(btn_del, groupBox, actionReference);
 
             // //
             Controls.Add(groupBox);
@@ -179,20 +158,9 @@ namespace AutoClicker
             lbl_key.Text = "key:";
             lbl_key.AutoSize = true;
 
-            lbl_delay.Location = new Point(236, 13);
-            lbl_delay.Text = "delay:";
-            lbl_delay.AutoSize = true;
+            CreateDelayLabel(lbl_delay);
 
-            nud_delay.Location = new Point(284, 11);
-            nud_delay.Size = new Size(102, 27);
-            nud_delay.Minimum = 0;
-            nud_delay.Maximum = 1000000000;
-            nud_delay.Value = delay; // Extra line
-            nud_delay.ValueChanged += (sender, e) =>
-            {
-                int delay = Convert.ToInt32(nud_delay.Value);
-                actionReference.SetDelay(delay);
-            };
+            CreateDelayNumericUpDown(nud_delay, delay, actionReference);
 
             lbl_ms.Location = new Point(387, 13);
             lbl_ms.Text = "ms";
@@ -207,16 +175,7 @@ namespace AutoClicker
                 lbl_key.Text = cmb_keys.SelectedValue.ToString();
             };
 
-            btn_del.Size = new Size(40, 27);
-            btn_del.Location = new Point(569, 9);
-            btn_del.Text = "DEL";
-            btn_del.BackColor = Color.Red;
-            btn_del.Click += (sender, e) =>
-            {
-                Controls.Remove(groupBox);
-                _groupBoxList.Remove(groupBox);
-                _actionList.Remove(actionReference);
-            };
+            CreateDeleteButton(btn_del, groupBox, actionReference);
 
             // other shit
             Controls.Add(groupBox);
@@ -226,6 +185,37 @@ namespace AutoClicker
             // just ignore
             _nAction++;
             _nGroupbox++;
+        }
+        void CreateDelayLabel(Label lbl_delay)
+        {
+            lbl_delay.Location = new Point(236, 13);
+            lbl_delay.Text = "delay:";
+            lbl_delay.AutoSize = true;
+        }
+        void CreateDelayNumericUpDown(NumericUpDown nud_delay, int delay, Action actionReference)
+        {
+            nud_delay.Location = new Point(284, 11);
+            nud_delay.Size = new Size(102, 27);
+            nud_delay.Minimum = 0;
+            nud_delay.Maximum = 1000000000;
+            nud_delay.Value = delay; // Extra line
+            nud_delay.ValueChanged += (sender, e) =>
+            {
+                int delay = Convert.ToInt32(nud_delay.Value);
+                actionReference.SetDelay(delay);
+            };
+        }
+        void CreateDeleteButton(Button btn_del, GroupBox groupBox, Action actionReference)
+        {
+            btn_del.Size = new Size(40, 27);
+            btn_del.Location = new Point(569, 9);
+            btn_del.Text = "DEL";
+            btn_del.Click += (sender, e) =>
+            {
+                Controls.Remove(groupBox);
+                _groupBoxList.Remove(groupBox);
+                _actionList.Remove(actionReference);
+            };
         }
         void SavePoint(Label lbl_x, Label lbl_y, Action nAction)
         {
