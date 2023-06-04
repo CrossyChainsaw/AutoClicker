@@ -63,6 +63,16 @@ namespace AutoClicker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap autoclicker_skin {
+            get {
+                object obj = ResourceManager.GetObject("autoclicker_skin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TrashIcon {
             get {
                 object obj = ResourceManager.GetObject("TrashIcon", resourceCulture);

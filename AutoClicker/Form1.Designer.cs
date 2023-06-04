@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_AutoClicker));
             this.BTN_Start = new System.Windows.Forms.Button();
             this.BTN_Add = new System.Windows.Forms.Button();
             this.NUD_Repetitions = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LBL_Repetitions = new System.Windows.Forms.Label();
             this.LBL_EstimatedTime = new System.Windows.Forms.Label();
             this.BTN_Save = new System.Windows.Forms.Button();
             this.BTN_Load = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             // 
             // BTN_Add
             // 
+            this.BTN_Add.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BTN_Add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BTN_Add.Location = new System.Drawing.Point(187, 17);
             this.BTN_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -60,7 +62,7 @@
             this.BTN_Add.Size = new System.Drawing.Size(110, 23);
             this.BTN_Add.TabIndex = 4;
             this.BTN_Add.Text = "Add MouseClick";
-            this.BTN_Add.UseVisualStyleBackColor = true;
+            this.BTN_Add.UseVisualStyleBackColor = false;
             this.BTN_Add.Click += new System.EventHandler(this.BTN_Add_Click);
             // 
             // NUD_Repetitions
@@ -78,15 +80,15 @@
             this.NUD_Repetitions.ValueChanged += new System.EventHandler(this.NUD_Repetitions_ValueChanged);
             this.NUD_Repetitions.Leave += new System.EventHandler(this.NUD_Repetitions_Leave);
             // 
-            // label2
+            // LBL_Repetitions
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Repetitions:";
-            this.label2.Click += new System.EventHandler(this.LBL_Repetitions_Click);
+            this.LBL_Repetitions.AutoSize = true;
+            this.LBL_Repetitions.Location = new System.Drawing.Point(10, 19);
+            this.LBL_Repetitions.Name = "LBL_Repetitions";
+            this.LBL_Repetitions.Size = new System.Drawing.Size(69, 15);
+            this.LBL_Repetitions.TabIndex = 8;
+            this.LBL_Repetitions.Text = "Repetitions:";
+            this.LBL_Repetitions.Click += new System.EventHandler(this.LBL_Repetitions_Click);
             // 
             // LBL_EstimatedTime
             // 
@@ -138,15 +140,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 338);
+            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ClientSize = new System.Drawing.Size(690, 338);
             this.Controls.Add(this.BTN_AddButtonPress);
             this.Controls.Add(this.BTN_Load);
             this.Controls.Add(this.BTN_Save);
             this.Controls.Add(this.LBL_EstimatedTime);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LBL_Repetitions);
             this.Controls.Add(this.NUD_Repetitions);
             this.Controls.Add(this.BTN_Add);
             this.Controls.Add(this.BTN_Start);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FRM_AutoClicker";
             this.Text = "Auto Clicker";
@@ -161,7 +165,7 @@
         private Button BTN_Start;
         private Button BTN_Add;
         private NumericUpDown NUD_Repetitions;
-        private Label label2;
+        private Label LBL_Repetitions;
         private Label LBL_EstimatedTime;
         private Button BTN_Save;
         private Button BTN_Load;

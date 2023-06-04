@@ -21,6 +21,7 @@ namespace AutoClicker
         // Fields
         int gbx = 10;
         int gby = 47;
+        bool stop = false;
         bool _clicked = false;
         int _nGroupbox = 0; // might do shit
         Action _actionReference;
@@ -44,100 +45,7 @@ namespace AutoClicker
             uint Y = (uint)Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
         }
-        void CreateGroupBox_MouseClick()
-        {
-            // Local Variables
-            Action actionReference = new MouseAction(new Point(0, 0), 0);
-
-            // GROUPBOX DESIGN STUFF    
-            int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
-            int xLocation = gbx;
-
-            GroupBox groupBox = new GroupBox();
-            groupBox.Location = new Point(xLocation, yLocation);
-            groupBox.Size = new Size(610, 38);
-            groupBox.Text = "";
-
-            Label lbl_point = new Label();
-            Label lbl_x = new Label();
-            Label lbl_y = new Label();
-            Label lbl_delay = new Label();
-            NumericUpDown nud_delay = new NumericUpDown();
-            Label lbl_ms = new Label();
-            Button btn_SetLocation = new Button();
-            Button btn_del = new Button();
-
-            groupBox.Controls.Add(lbl_point);
-            groupBox.Controls.Add(lbl_x);
-            groupBox.Controls.Add(lbl_y);
-            groupBox.Controls.Add(lbl_delay);
-            groupBox.Controls.Add(nud_delay);
-            groupBox.Controls.Add(lbl_ms);
-            groupBox.Controls.Add(btn_SetLocation);
-            groupBox.Controls.Add(btn_del);
-
-            lbl_point.Location = new Point(3, 13);
-            lbl_point.Text = "Point " + _nGroupbox + ":";
-            lbl_point.Size = new Size(57, 20);
-
-            lbl_x.Location = new Point(66, 13);
-            lbl_x.Text = "x: 0";
-            lbl_x.AutoSize = true;
-
-            lbl_y.Location = new Point(119, 13);
-            lbl_y.Text = "y: 0";
-            lbl_y.AutoSize = true;
-
-            lbl_delay.Location = new Point(236, 13);
-            lbl_delay.Text = "delay:";
-            lbl_delay.AutoSize = true;
-
-            nud_delay.Location = new Point(284, 11);
-            nud_delay.Size = new Size(102, 27);
-            nud_delay.Minimum = 0;
-            nud_delay.Maximum = 1000000000;
-            nud_delay.ValueChanged += (sender, e) =>
-            {
-                int delay = Convert.ToInt32(nud_delay.Value);
-                actionReference.SetDelay(delay);
-            };
-
-            lbl_ms.Location = new Point(387, 13);
-            lbl_ms.Text = "ms";
-            lbl_ms.AutoSize = true;
-
-            btn_SetLocation.Location = new Point(447, 10);
-            btn_SetLocation.Text = "Set Location";
-            btn_SetLocation.Size = new Size(114, 24);
-            btn_SetLocation.Cursor = Cursors.Hand;
-            btn_SetLocation.Click += (sender, e) =>
-            {
-                _clicked = true;
-                _lbl_x_temp = lbl_x;
-                _lbl_y_temp = lbl_y;
-                _actionReference = actionReference;
-            };
-
-            btn_del.Size = new Size(40, 27);
-            btn_del.Location = new Point(569, 9);
-            btn_del.Text = "DEL";
-            btn_del.BackColor = Color.Red;
-            btn_del.Click += (sender, e) =>
-            {
-                Controls.Remove(groupBox);
-                _groupBoxList.Remove(groupBox);
-                _actionList.Remove(actionReference);
-            };
-
-            // //
-            Controls.Add(groupBox);
-            _actionList.Add(actionReference);
-            _groupBoxList.Add(groupBox);
-
-            _nAction++;
-            _nGroupbox++;
-        }
-        void CreateGroupBox_MouseClick(int x, int y, int delay)
+        void CreateGroupBox_MouseClick(int x = 0, int y = 0, int delay = 0)
         {
             // Local Variables
             Action actionReference = new MouseAction(new Point(x, y), delay);
@@ -214,8 +122,9 @@ namespace AutoClicker
 
             btn_del.Size = new Size(40, 27);
             btn_del.Location = new Point(569, 9);
-            btn_del.Text = "DEL";
-            btn_del.BackColor = Color.Red;
+            btn_del.Text = "";
+            btn_del.BackgroundImage = Properties.Resources.TrashIcon;
+            btn_del.BackgroundImageLayout = ImageLayout.Stretch;
             btn_del.Click += (sender, e) =>
             {
                 Controls.Remove(groupBox);
@@ -231,93 +140,7 @@ namespace AutoClicker
             _nAction++;
             _nGroupbox++;
         }
-        void CreateGroupBox_KeyPress()
-        {
-            // Variables
-            Action actionReference = new KeyAction(VirtualKeyCode.CONTROL, 0);
-
-            // GROUPBOX DESIGN
-            int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
-            int xLocation = gbx;
-
-            GroupBox groupBox = new GroupBox();
-            groupBox.Location = new Point(xLocation, yLocation);
-            groupBox.Size = new Size(610, 38); //561 38
-            groupBox.Text = "";
-            groupBox.Name = "GB" + _nAction;
-
-            Label lbl_point = new Label();
-            Label lbl_key = new Label();
-            ComboBox cmb_keys = new ComboBox();
-            Label lbl_delay = new Label();
-            NumericUpDown nud_delay = new NumericUpDown();
-            Label lbl_ms = new Label();
-            Button btn_del = new Button();
-
-            groupBox.Controls.Add(lbl_point);
-            groupBox.Controls.Add(lbl_key);
-            groupBox.Controls.Add(cmb_keys);
-            groupBox.Controls.Add(lbl_delay);
-            groupBox.Controls.Add(nud_delay);
-            groupBox.Controls.Add(lbl_ms);
-            groupBox.Controls.Add(btn_del);
-
-            lbl_point.Location = new Point(3, 13);
-            lbl_point.Text = "Key " + _nGroupbox + ":";
-            lbl_point.Size = new Size(57, 20);
-
-            lbl_key.Location = new Point(66, 13);
-            lbl_key.Text = "";
-            lbl_key.AutoSize = true;
-
-            lbl_delay.Location = new Point(236, 13);
-            lbl_delay.Text = "delay:";
-            lbl_delay.AutoSize = true;
-
-            nud_delay.Location = new Point(284, 11);
-            nud_delay.Size = new Size(102, 27);
-            nud_delay.Minimum = 0;
-            nud_delay.Maximum = 1000000000;
-            nud_delay.ValueChanged += (sender, e) =>
-            {
-                int delay = Convert.ToInt32(nud_delay.Value);
-                actionReference.SetDelay(delay);
-            };
-
-            lbl_ms.Location = new Point(387, 13);
-            lbl_ms.Text = "ms";
-            lbl_ms.AutoSize = true;
-
-            cmb_keys.Location = new Point(447, 11);
-            cmb_keys.Size = new Size(114, 28);
-            cmb_keys.DataSource = new KeyAction(VirtualKeyCode.CONTROL, 0).AllKeys;
-            cmb_keys.SelectedIndexChanged += (sender, e) =>
-            {
-                actionReference.SetKey((VirtualKeyCode)cmb_keys.SelectedValue);
-                lbl_key.Text = cmb_keys.SelectedValue.ToString();
-            };
-
-            btn_del.Size = new Size(40, 27);
-            btn_del.Location = new Point(569, 9);
-            btn_del.Text = "DEL";
-            btn_del.BackColor = Color.Red;
-            btn_del.Click += (sender, e) =>
-            {
-                Controls.Remove(groupBox);
-                _groupBoxList.Remove(groupBox);
-                _actionList.Remove(actionReference);
-            };
-
-            // other shit
-            Controls.Add(groupBox);
-            _groupBoxList.Add(groupBox);
-            _actionList.Add(actionReference);
-
-            // just ignore
-            _nAction++;
-            _nGroupbox++;
-        }
-        void CreateGroupBox_KeyPress(VirtualKeyCode key, int delay)
+        void CreateGroupBox_KeyPress(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 0)
         {
             // Variables
             Action actionReference = new KeyAction(key, delay);
@@ -439,6 +262,42 @@ namespace AutoClicker
                 return estimatedTimeInMilliseconds + "ms";
             }
         }
+        void LoadData()
+        {
+            List<(Action a, VirtualKeyCode k, int d, int x, int y)> data;
+            data = Data.LoadAsTupleList();
+            _actionList.Clear();
+            foreach (var item in data)
+            {
+                if (item.a is MouseAction)
+                {
+                    CreateGroupBox_MouseClick(item.x, item.y, item.d);
+                }
+                else if (item.a is KeyAction)
+                {
+                    CreateGroupBox_KeyPress(item.k, item.d);
+                }
+            }
+            MessageBox.Show("DATA LOADED");
+        }
+        void LoadCoolSkin()
+        {
+            this.Opacity = 0.95;
+            this.BackColor = Color.Black;
+            this.BackgroundImage = Properties.Resources.autoclicker_skin;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            foreach (Control item in Controls)
+            {
+                item.BackColor = Color.Black;
+                item.ForeColor = Color.Red;
+                if (item is Button)
+                {
+                    ((Button)item).FlatStyle = FlatStyle.Flat;
+                    ((Button)item).FlatAppearance.BorderColor = Color.Red;
+                    ((Button)item).FlatAppearance.BorderSize = 1;
+                }
+            }
+        }
 
         // Events
         private void FRM_AutoClicker_Deactivate(object sender, EventArgs e)
@@ -466,8 +325,17 @@ namespace AutoClicker
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
             for (int i = 0; i < repetitions; i++)
             {
+                if (stop)
+                {
+                    break;
+                    stop = false;
+                }
                 for (int n = 0; n < _actionList.Count; n++)
                 {
+                    if (stop)
+                    {
+                        break;
+                    }
                     Thread.Sleep(_actionList[n].Delay);
                     if (_actionList[n] is KeyAction)
                     {
@@ -484,6 +352,10 @@ namespace AutoClicker
         private void NUD_Repetitions_ValueChanged(object sender, EventArgs e)
         {
             LBL_EstimatedTime.Text = "Estimated time: " + CalculateEstimatedTime();
+            if (NUD_Repetitions.Value == 69)
+            {
+                LoadCoolSkin();
+            }
         }
         private void NUD_Repetitions_Leave(object sender, EventArgs e)
         {
@@ -503,24 +375,6 @@ namespace AutoClicker
         {
             LoadData();
         }
-        void LoadData()
-        {
-            List<(Action a, VirtualKeyCode k, int d, int x, int y)> data;
-            data = Data.LoadAsTupleList();
-            _actionList.Clear();
-            foreach (var item in data)
-            {
-                if (item.a is MouseAction)
-                {
-                    CreateGroupBox_MouseClick(item.x, item.y, item.d);
-                }
-                else if (item.a is KeyAction)
-                {
-                    CreateGroupBox_KeyPress(item.k, item.d);
-                }
-            }
-            MessageBox.Show("DATA LOADED");
-        }
 
         private void LBL_Repetitions_Click(object sender, EventArgs e)
         {
@@ -530,6 +384,12 @@ namespace AutoClicker
         {
             MessageBox.Show("tf you clicking on some text 😭");
         }
+
+        private void BTN_Stop_Click(object sender, EventArgs e)
+        {
+            stop = true;
+        }
+
     }
 }
 
