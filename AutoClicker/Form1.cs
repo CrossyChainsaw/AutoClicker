@@ -22,7 +22,6 @@ namespace AutoClicker
         // Fields
         int gbx = 10;
         int gby = 47;
-        bool stop = false;
         bool _clicked = false;
         int _nGroupbox = 0; // might do shit
         Action _actionReference;
@@ -46,7 +45,7 @@ namespace AutoClicker
             uint Y = (uint)Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
         }
-        void CreateGroupBox_MouseClick(int x = 0, int y = 0, int delay = 0)
+        void CreateGroupBox_MouseClick(int x = 0, int y = 0, int delay = 100)
         {
             // Local Variables
             Action actionReference = new MouseAction(new Point(x, y), delay);
@@ -120,7 +119,7 @@ namespace AutoClicker
             _nAction++;
             _nGroupbox++;
         }
-        void CreateGroupBox_KeyPress(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 0)
+        void CreateGroupBox_KeyPress(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 100)
         {
             // Variables
             Action actionReference = new KeyAction(key, delay);
@@ -262,6 +261,15 @@ namespace AutoClicker
                 }
             }
         }
+        async void SaveToLocalSaveFile()
+        {
+            List<(Action a, VirtualKeyCode key, int delay, int x, int y)> formattedList = new List<(Action a, VirtualKeyCode key, int delay, int x, int y)>();
+            for (int i = 0; i < _actionList.Count; i++)
+            {
+                formattedList.Add((_actionList[i], _actionList[i].Key, _actionList[i].Delay, _actionList[i].Point.X, _actionList[i].Point.Y));
+            }
+            await Data.Overwrite(formattedList);
+        }
 
         // Events
         private void FRM_AutoClicker_Deactivate(object sender, EventArgs e)
@@ -298,17 +306,8 @@ namespace AutoClicker
             int repetitions = Convert.ToInt32(NUD_Repetitions.Value);
             for (int i = 0; i < repetitions; i++)
             {
-                if (stop)
-                {
-                    break;
-                    stop = false;
-                }
                 for (int n = 0; n < _actionList.Count; n++)
                 {
-                    if (stop)
-                    {
-                        break;
-                    }
                     Thread.Sleep(_actionList[n].Delay);
                     if (_actionList[n] is KeyAction)
                     {
@@ -336,12 +335,7 @@ namespace AutoClicker
         }
         async private void BTN_Save_Click(object sender, EventArgs e)
         {
-            List<(Action a, VirtualKeyCode key, int delay, int x, int y)> formattedList = new List<(Action a, VirtualKeyCode key, int delay, int x, int y)>();
-            for (int i = 0; i < _actionList.Count; i++)
-            {
-                formattedList.Add((_actionList[i], _actionList[i].Key, _actionList[i].Delay, _actionList[i].Point.X, _actionList[i].Point.Y));
-            }
-            await Data.Overwrite(formattedList);
+            SaveToLocalSaveFile();
             MessageBox.Show("DATA SAVED");
         }
         private void BTN_Load_Click(object sender, EventArgs e)
@@ -393,14 +387,29 @@ namespace AutoClicker
             MessageBox.Show("tf you clicking on some text 😭");
         }
 
-        private void BTN_Stop_Click(object sender, EventArgs e)
+        private async void BTN_Save_As_Click(object sender, EventArgs e)
         {
-            stop = true;
-        }
+            // first locally save to SaveFile.txt
+            SaveToLocalSaveFile();
 
-        private void BTN_Save_As_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Work in progress...");
+            // Displays a SaveFileDialog so the user can save the Image
+            // assigned to Button2.
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text Files | *.txt";
+            saveFileDialog1.Title = "Save an action chain";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
+                fs.Close();
+            }
+            // load data from savefile
+            string[] data = Data.LoadDataAsStringArray(Data.DATA_FILE);
+            // put data in newly named save
+            File.WriteAllLines(saveFileDialog1.FileName, data);
+
         }
     }
 }

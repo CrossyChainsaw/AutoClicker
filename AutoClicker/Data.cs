@@ -9,7 +9,7 @@ namespace AutoClicker
 {
     internal class Data
     {
-        const string DATA_FILE = "./Resources/SaveFile.txt";
+        public const string DATA_FILE = "./Resources/SaveFile.txt";
         public static async Task Overwrite(List<(Action a, VirtualKeyCode key, int delay, int x, int y)> data)
         {
             string[] newData = TupleListToStringArray(data);
@@ -57,6 +57,11 @@ namespace AutoClicker
             }
             return data;
         }
+        public static string[] LoadDataAsStringArray(string filePath)
+        {
+            string[] data = File.ReadAllLines(filePath);
+            return data;
+        }
         static VirtualKeyCode ConvertStringToKey(string key)
         {
             // covert string to keys
@@ -84,7 +89,7 @@ namespace AutoClicker
                 return (new KeyAction(VirtualKeyCode.CONTROL, 0), key, delay, X, Y);
             }
         }
-        private static string[] TupleListToStringArray(List<(Action a, VirtualKeyCode key, int d, int x, int y)> data)
+        static string[] TupleListToStringArray(List<(Action a, VirtualKeyCode key, int d, int x, int y)> data)
         {
             List<string> dataInStringList = new List<string>();
             foreach ((Action a, VirtualKeyCode k, int d, int x, int y) entry in data)
