@@ -23,7 +23,7 @@ namespace AutoClicker
         int gbx = 10;
         int gby = 47;
         bool _clicked = false;
-        int _nGroupbox = 0; // might do shit
+        int _nGroupbox = 1; // might do shit
         Action _actionReference;
         int _nAction = 0; // might do shit
         int _verticalDistanceBetweenGroupboxes = 27;
@@ -215,6 +215,7 @@ namespace AutoClicker
                 Controls.Remove(groupBox);
                 _groupBoxList.Remove(groupBox);
                 _actionList.Remove(actionReference);
+                _nGroupbox -= 1; // makes it so that if you add a new action it will get ordered correctly
             };
         }
         string CalculateEstimatedTime()

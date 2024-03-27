@@ -43,11 +43,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kaan\\Downloads\\AutoClicker-1.6.0\\AutoClicker-1.6.0\\AutoClicker\\AutoClicker.csproj",
+      "projectUniqueName": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
       "projectName": "AutoClicker",
-      "projectPath": "C:\\Users\\Kaan\\Downloads\\AutoClicker-1.6.0\\AutoClicker-1.6.0\\AutoClicker\\AutoClicker.csproj",
+      "projectPath": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
       "packagesPath": "C:\\Users\\Kaan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaan\\Downloads\\AutoClicker-1.6.0\\AutoClicker-1.6.0\\AutoClicker\\obj\\",
+      "outputPath": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kaan\\AppData\\Roaming\\NuGet\\NuGet.Config",

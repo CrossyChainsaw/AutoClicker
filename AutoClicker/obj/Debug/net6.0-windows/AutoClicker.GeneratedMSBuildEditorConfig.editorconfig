@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AutoClicker
-build_property.ProjectDir = C:\Users\Kaan\Downloads\AutoClicker-1.6.0\AutoClicker-1.6.0\AutoClicker\
+build_property.ProjectDir = C:\Users\Kaan\source\repos\C#\_NotSemester7\AutoClicker\AutoClicker\AutoClicker\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
