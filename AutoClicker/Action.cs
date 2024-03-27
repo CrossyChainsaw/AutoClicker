@@ -12,6 +12,7 @@ namespace AutoClicker
         public VirtualKeyCode Key { get; internal set; }
         public int Delay { get; internal set; }
         public Point Point { get; internal set; }
+        public string Text { get; internal set; }
 
         public void SetPoint(Point point)
         {
@@ -24,6 +25,10 @@ namespace AutoClicker
         public void SetDelay(int delay)
         {
             Delay = delay;
+        }
+        public void SetText(string text)
+        {
+            Text = text;
         }
     }
 }

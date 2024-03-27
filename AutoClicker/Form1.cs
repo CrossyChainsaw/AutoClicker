@@ -2,6 +2,7 @@
 using WindowsInput;
 using WindowsInput.Native;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AutoClicker
 {
@@ -45,7 +46,7 @@ namespace AutoClicker
             uint Y = (uint)Cursor.Position.Y;
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
         }
-        void CreateGroupBox_MouseClick(int x = 0, int y = 0, int delay = 100)
+        void CreateGroupBox_MouseAction(int x = 0, int y = 0, int delay = 100)
         {
             // Local Variables
             Action actionReference = new MouseAction(new Point(x, y), delay);
@@ -119,7 +120,7 @@ namespace AutoClicker
             _nAction++;
             _nGroupbox++;
         }
-        void CreateGroupBox_KeyPress(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 100)
+        void CreateGroupBox_KeyAction(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 100)
         {
             // Variables
             Action actionReference = new KeyAction(key, delay);
@@ -168,11 +169,77 @@ namespace AutoClicker
 
             cmb_keys.Location = new Point(447, 11);
             cmb_keys.Size = new Size(114, 28);
-            cmb_keys.DataSource = new KeyAction(VirtualKeyCode.CONTROL, 0).AllKeys;
+            cmb_keys.DataSource = KeyAction.ALLKEYS;
             cmb_keys.SelectedIndexChanged += (sender, e) =>
             {
                 actionReference.SetKey((VirtualKeyCode)cmb_keys.SelectedValue);
                 lbl_key.Text = cmb_keys.SelectedValue.ToString();
+            };
+
+            CreateDeleteButton(btn_del, groupBox, actionReference);
+
+            // other shit
+            Controls.Add(groupBox);
+            _groupBoxList.Add(groupBox);
+            _actionList.Add(actionReference);
+
+            // just ignore
+            _nAction++;
+            _nGroupbox++;
+        }
+        void CreateGroupBox_TextAction(int delay = 100)
+        {
+            // Variables
+            Action actionReference = new TextAction(string.Empty, delay);
+
+            // GROUPBOX DESIGN
+            int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
+            int xLocation = gbx;
+
+            GroupBox groupBox = new GroupBox();
+            groupBox.Location = new Point(xLocation, yLocation);
+            groupBox.Size = new Size(610, 38); //561 38
+            groupBox.Text = "";
+            groupBox.Name = "GB" + _nAction;
+
+            Label lbl_point = new Label();
+            Label lbl_text = new Label();
+            TextBox tb_text = new TextBox();
+            Label lbl_delay = new Label();
+            NumericUpDown nud_delay = new NumericUpDown();
+            Label lbl_ms = new Label();
+            Button btn_del = new Button();
+
+            groupBox.Controls.Add(lbl_point);
+            groupBox.Controls.Add(lbl_text);
+            groupBox.Controls.Add(tb_text);
+            groupBox.Controls.Add(lbl_delay);
+            groupBox.Controls.Add(nud_delay);
+            groupBox.Controls.Add(lbl_ms);
+            groupBox.Controls.Add(btn_del);
+
+            lbl_point.Location = new Point(3, 13);
+            lbl_point.Text = "Text " + _nGroupbox + ":";
+            lbl_point.Size = new Size(57, 20);
+
+            lbl_text.Location = new Point(66, 13);
+            lbl_text.Text = "text:";
+            lbl_text.AutoSize = true;
+
+            CreateDelayLabel(lbl_delay);
+
+            CreateDelayNumericUpDown(nud_delay, delay, actionReference);
+
+            lbl_ms.Location = new Point(387, 13);
+            lbl_ms.Text = "ms";
+            lbl_ms.AutoSize = true;
+
+            tb_text.Location = new Point(447, 11);
+            tb_text.Size = new Size(114, 28);
+            tb_text.TextChanged += (sender, e) =>
+            {
+                actionReference.SetText(tb_text.Text);
+                lbl_text.Text = "text: " + tb_text.Text;
             };
 
             CreateDeleteButton(btn_del, groupBox, actionReference);
@@ -290,13 +357,17 @@ namespace AutoClicker
                 nAction.SetPoint(new Point(cursorX, cursorY));
             }
         }
-        private void BTN_Add_Click(object sender, EventArgs e)
+        private void BTN_AddMouseAction_Click(object sender, EventArgs e)
         {
-            CreateGroupBox_MouseClick();
+            CreateGroupBox_MouseAction();
         }
-        private void BTN_AddButtonPress_Click(object sender, EventArgs e)
+        private void BTN_AddButtonAction_Click(object sender, EventArgs e)
         {
-            CreateGroupBox_KeyPress();
+            CreateGroupBox_KeyAction();
+        }
+        private void BTN_AddText_Click(object sender, EventArgs e)
+        {
+            CreateGroupBox_TextAction();
         }
         private void BTN_Start_Click(object sender, EventArgs e)
         {
@@ -319,6 +390,10 @@ namespace AutoClicker
                         Cursor.Position = _actionList[n].Point;
                         DoMouseClick();
                     }
+                    else if (_actionList[n] is TextAction)
+                    {
+                        SendKeys.SendWait(_actionList[n].Text);
+                    }
                 }
             }
         }
@@ -338,6 +413,30 @@ namespace AutoClicker
         {
             SaveToLocalSaveFile();
             MessageBox.Show("DATA SAVED");
+        }
+        private async void BTN_Save_As_Click(object sender, EventArgs e)
+        {
+            // first locally save to SaveFile.txt
+            SaveToLocalSaveFile();
+
+            // Displays a SaveFileDialog so the user can save the Image
+            // assigned to Button2.
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text Files | *.txt";
+            saveFileDialog1.Title = "Save an action chain";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
+                fs.Close();
+            }
+            // load data from savefile
+            string[] data = Data.LoadDataAsStringArray(Data.DATA_FILE);
+            // put data in newly named save
+            File.WriteAllLines(saveFileDialog1.FileName, data);
+
         }
         private void BTN_Load_Click(object sender, EventArgs e)
         {
@@ -368,11 +467,11 @@ namespace AutoClicker
                 {
                     if (item.a is MouseAction)
                     {
-                        CreateGroupBox_MouseClick(item.x, item.y, item.d);
+                        CreateGroupBox_MouseAction(item.x, item.y, item.d);
                     }
                     else if (item.a is KeyAction)
                     {
-                        CreateGroupBox_KeyPress(item.k, item.d);
+                        CreateGroupBox_KeyAction(item.k, item.d);
                     }
                 }
                 MessageBox.Show("DATA LOADED");
@@ -388,30 +487,7 @@ namespace AutoClicker
             MessageBox.Show("tf you clicking on some text 😭");
         }
 
-        private async void BTN_Save_As_Click(object sender, EventArgs e)
-        {
-            // first locally save to SaveFile.txt
-            SaveToLocalSaveFile();
 
-            // Displays a SaveFileDialog so the user can save the Image
-            // assigned to Button2.
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Text Files | *.txt";
-            saveFileDialog1.Title = "Save an action chain";
-            saveFileDialog1.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
-            {
-                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog1.OpenFile();
-                fs.Close();
-            }
-            // load data from savefile
-            string[] data = Data.LoadDataAsStringArray(Data.DATA_FILE);
-            // put data in newly named save
-            File.WriteAllLines(saveFileDialog1.FileName, data);
-
-        }
     }
 }
 

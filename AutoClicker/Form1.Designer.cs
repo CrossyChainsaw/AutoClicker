@@ -29,161 +29,162 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_AutoClicker));
-            this.BTN_Start = new System.Windows.Forms.Button();
-            this.BTN_Add = new System.Windows.Forms.Button();
-            this.NUD_Repetitions = new System.Windows.Forms.NumericUpDown();
-            this.LBL_Repetitions = new System.Windows.Forms.Label();
-            this.LBL_EstimatedTime = new System.Windows.Forms.Label();
-            this.BTN_Save = new System.Windows.Forms.Button();
-            this.BTN_Load = new System.Windows.Forms.Button();
-            this.BTN_AddButtonPress = new System.Windows.Forms.Button();
-            this.BTN_Save_As = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Repetitions)).BeginInit();
-            this.SuspendLayout();
+            BTN_Start = new Button();
+            BTN_AddMouseAction = new Button();
+            NUD_Repetitions = new NumericUpDown();
+            LBL_Repetitions = new Label();
+            LBL_EstimatedTime = new Label();
+            BTN_Save = new Button();
+            BTN_Load = new Button();
+            BTN_AddButtonAction = new Button();
+            BTN_Save_As = new Button();
+            BTN_AddText = new Button();
+            ((System.ComponentModel.ISupportInitialize)NUD_Repetitions).BeginInit();
+            SuspendLayout();
             // 
             // BTN_Start
             // 
-            this.BTN_Start.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Start.Location = new System.Drawing.Point(420, 17);
-            this.BTN_Start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_Start.Name = "BTN_Start";
-            this.BTN_Start.Size = new System.Drawing.Size(82, 23);
-            this.BTN_Start.TabIndex = 3;
-            this.BTN_Start.Text = "Start";
-            this.BTN_Start.UseVisualStyleBackColor = true;
-            this.BTN_Start.Click += new System.EventHandler(this.BTN_Start_Click);
+            BTN_Start.Cursor = Cursors.Hand;
+            BTN_Start.Location = new Point(588, 25);
+            BTN_Start.Name = "BTN_Start";
+            BTN_Start.Size = new Size(94, 29);
+            BTN_Start.TabIndex = 3;
+            BTN_Start.Text = "Start";
+            BTN_Start.UseVisualStyleBackColor = true;
+            BTN_Start.Click += BTN_Start_Click;
             // 
-            // BTN_Add
+            // BTN_AddMouseAction
             // 
-            this.BTN_Add.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BTN_Add.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Add.Location = new System.Drawing.Point(187, 17);
-            this.BTN_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_Add.Name = "BTN_Add";
-            this.BTN_Add.Size = new System.Drawing.Size(110, 23);
-            this.BTN_Add.TabIndex = 4;
-            this.BTN_Add.Text = "Add MouseClick";
-            this.BTN_Add.UseVisualStyleBackColor = false;
-            this.BTN_Add.Click += new System.EventHandler(this.BTN_Add_Click);
+            BTN_AddMouseAction.BackColor = SystemColors.ControlLight;
+            BTN_AddMouseAction.Cursor = Cursors.Hand;
+            BTN_AddMouseAction.Location = new Point(214, 23);
+            BTN_AddMouseAction.Name = "BTN_AddMouseAction";
+            BTN_AddMouseAction.Size = new Size(126, 31);
+            BTN_AddMouseAction.TabIndex = 4;
+            BTN_AddMouseAction.Text = "Add MouseClick";
+            BTN_AddMouseAction.UseVisualStyleBackColor = false;
+            BTN_AddMouseAction.Click += BTN_AddMouseAction_Click;
             // 
             // NUD_Repetitions
             // 
-            this.NUD_Repetitions.Location = new System.Drawing.Point(92, 17);
-            this.NUD_Repetitions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NUD_Repetitions.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.NUD_Repetitions.Name = "NUD_Repetitions";
-            this.NUD_Repetitions.Size = new System.Drawing.Size(89, 23);
-            this.NUD_Repetitions.TabIndex = 8;
-            this.NUD_Repetitions.ValueChanged += new System.EventHandler(this.NUD_Repetitions_ValueChanged);
-            this.NUD_Repetitions.Leave += new System.EventHandler(this.NUD_Repetitions_Leave);
+            NUD_Repetitions.Location = new Point(105, 23);
+            NUD_Repetitions.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
+            NUD_Repetitions.Name = "NUD_Repetitions";
+            NUD_Repetitions.Size = new Size(102, 27);
+            NUD_Repetitions.TabIndex = 8;
+            NUD_Repetitions.ValueChanged += NUD_Repetitions_ValueChanged;
+            NUD_Repetitions.Leave += NUD_Repetitions_Leave;
             // 
             // LBL_Repetitions
             // 
-            this.LBL_Repetitions.AutoSize = true;
-            this.LBL_Repetitions.Location = new System.Drawing.Point(10, 19);
-            this.LBL_Repetitions.Name = "LBL_Repetitions";
-            this.LBL_Repetitions.Size = new System.Drawing.Size(69, 15);
-            this.LBL_Repetitions.TabIndex = 8;
-            this.LBL_Repetitions.Text = "Repetitions:";
-            this.LBL_Repetitions.Click += new System.EventHandler(this.LBL_Repetitions_Click);
+            LBL_Repetitions.AutoSize = true;
+            LBL_Repetitions.Location = new Point(11, 25);
+            LBL_Repetitions.Name = "LBL_Repetitions";
+            LBL_Repetitions.Size = new Size(87, 20);
+            LBL_Repetitions.TabIndex = 8;
+            LBL_Repetitions.Text = "Repetitions:";
+            LBL_Repetitions.Click += LBL_Repetitions_Click;
             // 
             // LBL_EstimatedTime
             // 
-            this.LBL_EstimatedTime.AutoSize = true;
-            this.LBL_EstimatedTime.Location = new System.Drawing.Point(10, 40);
-            this.LBL_EstimatedTime.Name = "LBL_EstimatedTime";
-            this.LBL_EstimatedTime.Size = new System.Drawing.Size(98, 15);
-            this.LBL_EstimatedTime.TabIndex = 9;
-            this.LBL_EstimatedTime.Text = "Estimated time: 0";
-            this.LBL_EstimatedTime.Click += new System.EventHandler(this.LBL_EstimatedTime_Click);
+            LBL_EstimatedTime.AutoSize = true;
+            LBL_EstimatedTime.Location = new Point(11, 53);
+            LBL_EstimatedTime.Name = "LBL_EstimatedTime";
+            LBL_EstimatedTime.Size = new Size(124, 20);
+            LBL_EstimatedTime.TabIndex = 9;
+            LBL_EstimatedTime.Text = "Estimated time: 0";
+            LBL_EstimatedTime.Click += LBL_EstimatedTime_Click;
             // 
             // BTN_Save
             // 
-            this.BTN_Save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Save.Location = new System.Drawing.Point(596, 17);
-            this.BTN_Save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_Save.Name = "BTN_Save";
-            this.BTN_Save.Size = new System.Drawing.Size(82, 23);
-            this.BTN_Save.TabIndex = 10;
-            this.BTN_Save.Text = "Save";
-            this.BTN_Save.UseVisualStyleBackColor = true;
-            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
+            BTN_Save.Cursor = Cursors.Hand;
+            BTN_Save.Location = new Point(789, 25);
+            BTN_Save.Name = "BTN_Save";
+            BTN_Save.Size = new Size(94, 29);
+            BTN_Save.TabIndex = 10;
+            BTN_Save.Text = "Save";
+            BTN_Save.UseVisualStyleBackColor = true;
+            BTN_Save.Click += BTN_Save_Click;
             // 
             // BTN_Load
             // 
-            this.BTN_Load.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Load.Location = new System.Drawing.Point(508, 17);
-            this.BTN_Load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_Load.Name = "BTN_Load";
-            this.BTN_Load.Size = new System.Drawing.Size(82, 23);
-            this.BTN_Load.TabIndex = 11;
-            this.BTN_Load.Text = "Load";
-            this.BTN_Load.UseVisualStyleBackColor = true;
-            this.BTN_Load.Click += new System.EventHandler(this.BTN_Load_Click);
+            BTN_Load.Cursor = Cursors.Hand;
+            BTN_Load.Location = new Point(689, 25);
+            BTN_Load.Name = "BTN_Load";
+            BTN_Load.Size = new Size(94, 29);
+            BTN_Load.TabIndex = 11;
+            BTN_Load.Text = "Load";
+            BTN_Load.UseVisualStyleBackColor = true;
+            BTN_Load.Click += BTN_Load_Click;
             // 
-            // BTN_AddButtonPress
+            // BTN_AddButtonAction
             // 
-            this.BTN_AddButtonPress.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_AddButtonPress.Location = new System.Drawing.Point(303, 17);
-            this.BTN_AddButtonPress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_AddButtonPress.Name = "BTN_AddButtonPress";
-            this.BTN_AddButtonPress.Size = new System.Drawing.Size(110, 23);
-            this.BTN_AddButtonPress.TabIndex = 12;
-            this.BTN_AddButtonPress.Text = "Add ButtonPress";
-            this.BTN_AddButtonPress.UseVisualStyleBackColor = true;
-            this.BTN_AddButtonPress.Click += new System.EventHandler(this.BTN_AddButtonPress_Click);
+            BTN_AddButtonAction.Cursor = Cursors.Hand;
+            BTN_AddButtonAction.Location = new Point(346, 23);
+            BTN_AddButtonAction.Name = "BTN_AddButtonAction";
+            BTN_AddButtonAction.Size = new Size(126, 31);
+            BTN_AddButtonAction.TabIndex = 12;
+            BTN_AddButtonAction.Text = "Add ButtonPress";
+            BTN_AddButtonAction.UseVisualStyleBackColor = true;
+            BTN_AddButtonAction.Click += BTN_AddButtonAction_Click;
             // 
             // BTN_Save_As
             // 
-            this.BTN_Save_As.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_Save_As.Location = new System.Drawing.Point(684, 17);
-            this.BTN_Save_As.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BTN_Save_As.Name = "BTN_Save_As";
-            this.BTN_Save_As.Size = new System.Drawing.Size(82, 23);
-            this.BTN_Save_As.TabIndex = 13;
-            this.BTN_Save_As.Text = "Save As...";
-            this.BTN_Save_As.UseVisualStyleBackColor = true;
-            this.BTN_Save_As.Click += new System.EventHandler(this.BTN_Save_As_Click);
+            BTN_Save_As.Cursor = Cursors.Hand;
+            BTN_Save_As.Location = new Point(890, 25);
+            BTN_Save_As.Name = "BTN_Save_As";
+            BTN_Save_As.Size = new Size(94, 29);
+            BTN_Save_As.TabIndex = 13;
+            BTN_Save_As.Text = "Save As...";
+            BTN_Save_As.UseVisualStyleBackColor = true;
+            BTN_Save_As.Click += BTN_Save_As_Click;
+            // 
+            // BTN_AddText
+            // 
+            BTN_AddText.Cursor = Cursors.Hand;
+            BTN_AddText.Location = new Point(478, 25);
+            BTN_AddText.Name = "BTN_AddText";
+            BTN_AddText.Size = new Size(104, 29);
+            BTN_AddText.TabIndex = 14;
+            BTN_AddText.Text = "Add Text";
+            BTN_AddText.UseVisualStyleBackColor = true;
+            BTN_AddText.Click += BTN_AddText_Click;
             // 
             // FRM_AutoClicker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(785, 338);
-            this.Controls.Add(this.BTN_Save_As);
-            this.Controls.Add(this.BTN_AddButtonPress);
-            this.Controls.Add(this.BTN_Load);
-            this.Controls.Add(this.BTN_Save);
-            this.Controls.Add(this.LBL_EstimatedTime);
-            this.Controls.Add(this.LBL_Repetitions);
-            this.Controls.Add(this.NUD_Repetitions);
-            this.Controls.Add(this.BTN_Add);
-            this.Controls.Add(this.BTN_Start);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FRM_AutoClicker";
-            this.Text = "Auto Clicker";
-            this.Deactivate += new System.EventHandler(this.FRM_AutoClicker_Deactivate);
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Repetitions)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonShadow;
+            ClientSize = new Size(995, 451);
+            Controls.Add(BTN_AddText);
+            Controls.Add(BTN_Save_As);
+            Controls.Add(BTN_AddButtonAction);
+            Controls.Add(BTN_Load);
+            Controls.Add(BTN_Save);
+            Controls.Add(LBL_EstimatedTime);
+            Controls.Add(LBL_Repetitions);
+            Controls.Add(NUD_Repetitions);
+            Controls.Add(BTN_AddMouseAction);
+            Controls.Add(BTN_Start);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "FRM_AutoClicker";
+            Text = "Auto Clicker";
+            Deactivate += FRM_AutoClicker_Deactivate;
+            ((System.ComponentModel.ISupportInitialize)NUD_Repetitions).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Button BTN_Start;
-        private Button BTN_Add;
+        private Button BTN_AddMouseAction;
         private NumericUpDown NUD_Repetitions;
         private Label LBL_Repetitions;
         private Label LBL_EstimatedTime;
         private Button BTN_Save;
         private Button BTN_Load;
-        private Button BTN_AddButtonPress;
+        private Button BTN_AddButtonAction;
         private Button BTN_Save_As;
+        private Button BTN_AddText;
     }
 }

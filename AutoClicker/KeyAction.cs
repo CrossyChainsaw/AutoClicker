@@ -9,7 +9,17 @@ namespace AutoClicker
 {
     internal class KeyAction : Action
     {
-        public List<VirtualKeyCode> AllKeys = new List<VirtualKeyCode>() { VirtualKeyCode.CONTROL, VirtualKeyCode.ESCAPE, VirtualKeyCode.VK_A, VirtualKeyCode.VK_B, VirtualKeyCode.VK_C, VirtualKeyCode.SPACE };
+        public static readonly List<VirtualKeyCode> ALLKEYS = new List<VirtualKeyCode>()
+        {
+            VirtualKeyCode.CONTROL,
+            VirtualKeyCode.ESCAPE,
+            VirtualKeyCode.VK_A,
+            VirtualKeyCode.VK_B,
+            VirtualKeyCode.VK_C,
+            VirtualKeyCode.SPACE,
+            VirtualKeyCode.RETURN
+        };
+
         public KeyAction(VirtualKeyCode key, int delay)
         {
             Key = key;
