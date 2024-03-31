@@ -283,6 +283,16 @@ namespace AutoClicker
                 _groupBoxList.Remove(groupBox);
                 _actionList.Remove(actionReference);
                 _nGroupbox -= 1; // makes it so that if you add a new action it will get ordered correctly
+
+                // move down all groupboxes that are below this one
+                List<GroupBox> groupboxes = GetAllGroupboxes();
+                foreach (GroupBox groupbox in groupboxes)
+                {
+                    if (groupbox.Location.Y > groupBox.Location.Y)
+                    {
+                        groupbox.Location = new Point(groupbox.Location.X, groupbox.Location.Y - _verticalDistanceBetweenGroupboxes);
+                    }
+                }
             };
         }
         string CalculateEstimatedTime()
@@ -328,6 +338,18 @@ namespace AutoClicker
                     ((Button)item).FlatAppearance.BorderSize = 1;
                 }
             }
+        }
+        List<GroupBox> GetAllGroupboxes()
+        {
+            List<GroupBox> groupboxes = new List<GroupBox>();
+            foreach (Control item in Controls)
+            {
+                if (item is GroupBox)
+                {
+                    groupboxes.Add((GroupBox)item);
+                }
+            }
+            return groupboxes;
         }
         async void SaveToLocalSaveFile()
         {
