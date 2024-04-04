@@ -7,28 +7,20 @@
       "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\keyaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\keyaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\textaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\textaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\mouseaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\mouseaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|c:\\users\\kaan\\source\\repos\\c#\\_notsemester7\\autoclicker\\autoclicker\\autoclicker\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\autoclicker\\keyaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22C422A5-7D6C-430E-86DB-6C09AD19A23F}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\keyaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,59 +30,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Action.cs",
-              "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Action.cs",
-              "RelativeDocumentMoniker": "AutoClicker\\Action.cs",
-              "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Action.cs",
-              "RelativeToolTip": "AutoClicker\\Action.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAgwB4AAAAYAAAA",
+              "DocumentIndex": 3,
+              "Title": "Data.cs",
+              "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Data.cs",
+              "RelativeDocumentMoniker": "AutoClicker\\Data.cs",
+              "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Data.cs",
+              "RelativeToolTip": "AutoClicker\\Data.cs",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAswFwAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:57:51.099Z"
+              "WhenOpened": "2024-04-04T21:48:33.918Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "KeyAction.cs",
               "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\KeyAction.cs",
               "RelativeDocumentMoniker": "AutoClicker\\KeyAction.cs",
               "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\KeyAction.cs",
               "RelativeToolTip": "AutoClicker\\KeyAction.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAuwBEAAAAgAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:44:05.031Z"
+              "WhenOpened": "2024-03-27T12:44:05.031Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Program.cs",
-              "RelativeDocumentMoniker": "AutoClicker\\Program.cs",
-              "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Program.cs",
-              "RelativeToolTip": "AutoClicker\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:45:06.9Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "MouseAction.cs",
               "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\MouseAction.cs",
               "RelativeDocumentMoniker": "AutoClicker\\MouseAction.cs",
               "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\MouseAction.cs",
               "RelativeToolTip": "AutoClicker\\MouseAction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:44:59.15Z"
+              "WhenOpened": "2024-03-27T12:44:59.15Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "TextAction.cs",
               "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\TextAction.cs",
               "RelativeDocumentMoniker": "AutoClicker\\TextAction.cs",
@@ -98,7 +81,8 @@
               "RelativeToolTip": "AutoClicker\\TextAction.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:44:23.564Z"
+              "WhenOpened": "2024-03-27T12:44:23.564Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,21 +92,10 @@
               "RelativeDocumentMoniker": "AutoClicker\\Form1.cs",
               "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Form1.cs",
               "RelativeToolTip": "AutoClicker\\Form1.cs",
-              "ViewState": "AQIAAP8AAAAAAAAAAAAswCgBAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-27T11:58:23.183Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Form1.cs",
-              "RelativeDocumentMoniker": "AutoClicker\\Form1.cs",
-              "ToolTip": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\Form1.cs [Design]",
-              "RelativeToolTip": "AutoClicker\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:38:26.76Z"
             }
           ]
         }

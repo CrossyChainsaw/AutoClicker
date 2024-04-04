@@ -5,6 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsInput.Native;
 
+public enum KeyActionTypes
+{
+    Press,
+    Down,
+    Up,
+    Placeholder
+}
+
 namespace AutoClicker
 {
     internal class KeyAction : Action
@@ -16,15 +24,19 @@ namespace AutoClicker
             VirtualKeyCode.VK_A,
             VirtualKeyCode.VK_B,
             VirtualKeyCode.VK_C,
+            VirtualKeyCode.VK_D,
+            VirtualKeyCode.VK_V,
             VirtualKeyCode.SPACE,
-            VirtualKeyCode.RETURN
+            VirtualKeyCode.RETURN,
+            VirtualKeyCode.F2
         };
 
-        public KeyAction(VirtualKeyCode key, int delay)
+        public KeyAction(VirtualKeyCode key, int delay, KeyActionTypes keyActionType)
         {
             Key = key;
             Delay = delay;
-            Point = new Point(0, 0); // not used data
+            KeyActionType = keyActionType;
+            Point = new Point(0, 0); // unused
         }
     }
 }

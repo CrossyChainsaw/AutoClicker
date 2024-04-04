@@ -82,11 +82,15 @@ namespace AutoClicker
 
             if (a == "AutoClicker.MouseAction")
             {
-                return (new MouseAction(new Point(0, 0), 0), key, delay, X, Y);
+                return (new MouseAction(new Point(0, 0), 0, KeyActionTypes.Down), key, delay, X, Y);
             }
-            else
+            else if (a == "AutoClicker.KeyAction")
             {
-                return (new KeyAction(VirtualKeyCode.CONTROL, 0), key, delay, X, Y);
+                return (new KeyAction(VirtualKeyCode.CONTROL, 0, KeyActionTypes.Down), key, delay, X, Y);
+            }
+            else 
+            {
+                return (new KeyAction(VirtualKeyCode.CONTROL, 0, KeyActionTypes.Down), key, delay, X, Y);
             }
         }
         static string[] TupleListToStringArray(List<(Action a, VirtualKeyCode key, int d, int x, int y)> data)
