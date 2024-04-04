@@ -23,6 +23,7 @@ namespace AutoClicker
         // Fields
         int gbx = 10;
         int gby = 47;
+        const int HORIZONTAL_ACTION_WIDTH = 775;
         bool _clicked = false;
         int _nGroupbox = 1; // might do shit
         Action _actionReference;
@@ -49,7 +50,7 @@ namespace AutoClicker
         void CreateGroupBox_MouseAction(int x = 0, int y = 0, int delay = 100)
         {
             // Local Variables
-            Action actionReference = new MouseAction(new Point(x, y), delay);
+            Action actionReference = new MouseAction(new Point(x, y), delay, KeyActionTypes.Placeholder);
 
             // GROUPBOX DESIGN STUFF    
             int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
@@ -57,7 +58,7 @@ namespace AutoClicker
 
             GroupBox groupBox = new GroupBox();
             groupBox.Location = new Point(xLocation, yLocation);
-            groupBox.Size = new Size(610, 38);
+            groupBox.Size = new Size(HORIZONTAL_ACTION_WIDTH, 38);
             groupBox.Text = "";
 
             Label lbl_point = new Label();
@@ -123,7 +124,7 @@ namespace AutoClicker
         void CreateGroupBox_KeyAction(VirtualKeyCode key = VirtualKeyCode.CONTROL, int delay = 100)
         {
             // Variables
-            Action actionReference = new KeyAction(key, delay);
+            Action actionReference = new KeyAction(key, delay, KeyActionTypes.Up);
 
             // GROUPBOX DESIGN
             int yLocation = gby + _verticalDistanceBetweenGroupboxes * _nGroupbox;
@@ -131,7 +132,7 @@ namespace AutoClicker
 
             GroupBox groupBox = new GroupBox();
             groupBox.Location = new Point(xLocation, yLocation);
-            groupBox.Size = new Size(610, 38); //561 38
+            groupBox.Size = new Size(HORIZONTAL_ACTION_WIDTH, 38); //561 38
             groupBox.Text = "";
             groupBox.Name = "GB" + _nAction;
 
@@ -142,6 +143,7 @@ namespace AutoClicker
             NumericUpDown nud_delay = new NumericUpDown();
             Label lbl_ms = new Label();
             Button btn_del = new Button();
+            ComboBox cmb_keyType = new ComboBox();
 
             groupBox.Controls.Add(lbl_point);
             groupBox.Controls.Add(lbl_key);
@@ -150,6 +152,7 @@ namespace AutoClicker
             groupBox.Controls.Add(nud_delay);
             groupBox.Controls.Add(lbl_ms);
             groupBox.Controls.Add(btn_del);
+            groupBox.Controls.Add(cmb_keyType);
 
             lbl_point.Location = new Point(3, 13);
             lbl_point.Text = "Key " + _nGroupbox + ":";
@@ -167,13 +170,23 @@ namespace AutoClicker
             lbl_ms.Text = "ms";
             lbl_ms.AutoSize = true;
 
-            cmb_keys.Location = new Point(447, 11);
+            cmb_keys.Location = new Point(447, 10);
             cmb_keys.Size = new Size(114, 28);
-            cmb_keys.DataSource = KeyAction.ALLKEYS;
+            cmb_keys.DataSource = new List<VirtualKeyCode>(KeyAction.ALLKEYS);
             cmb_keys.SelectedIndexChanged += (sender, e) =>
             {
                 actionReference.SetKey((VirtualKeyCode)cmb_keys.SelectedValue);
-                lbl_key.Text = cmb_keys.SelectedValue.ToString();
+                lbl_key.Text = cmb_keyType.SelectedValue.ToString() + " " + actionReference.Key.ToString();
+            };
+
+            cmb_keyType.Location = new Point(575, 10);
+            cmb_keyType.DropDownStyle = ComboBoxStyle.DropDownList;
+            KeyActionTypes[] actionTypes = (KeyActionTypes[])Enum.GetValues(typeof(KeyActionTypes));
+            cmb_keyType.DataSource = actionTypes.Clone();
+            cmb_keyType.SelectedIndexChanged += (sender, e) =>
+            {
+                actionReference.SetKeyType((KeyActionTypes)cmb_keyType.SelectedValue);
+                lbl_key.Text = cmb_keyType.SelectedValue.ToString() + " " + actionReference.Key.ToString();
             };
 
             CreateDeleteButton(btn_del, groupBox, actionReference);
@@ -198,7 +211,7 @@ namespace AutoClicker
 
             GroupBox groupBox = new GroupBox();
             groupBox.Location = new Point(xLocation, yLocation);
-            groupBox.Size = new Size(610, 38); //561 38
+            groupBox.Size = new Size(HORIZONTAL_ACTION_WIDTH, 38); //561 38
             groupBox.Text = "";
             groupBox.Name = "GB" + _nAction;
 
@@ -274,8 +287,10 @@ namespace AutoClicker
         }
         void CreateDeleteButton(Button btn_del, GroupBox groupBox, Action actionReference)
         {
-            btn_del.Size = new Size(40, 27);
-            btn_del.Location = new Point(569, 9);
+            const int BTN_DEL_HORIZONTAL_WIDTH = 45;
+            const int BTN_DEL_VERTICAL_HEIGHT = 27;
+            btn_del.Size = new Size(BTN_DEL_HORIZONTAL_WIDTH, BTN_DEL_VERTICAL_HEIGHT);
+            btn_del.Location = new Point(HORIZONTAL_ACTION_WIDTH - BTN_DEL_HORIZONTAL_WIDTH, 9);
             btn_del.Text = "DEL";
             btn_del.Click += (sender, e) =>
             {
@@ -405,7 +420,18 @@ namespace AutoClicker
                     Thread.Sleep(_actionList[n].Delay);
                     if (_actionList[n] is KeyAction)
                     {
-                        _inputSim.Keyboard.KeyPress(_actionList[n].Key);
+                        if (_actionList[n].KeyActionType == KeyActionTypes.Press)
+                        {
+                            _inputSim.Keyboard.KeyPress(_actionList[n].Key);
+                        }
+                        else if (_actionList[n].KeyActionType == KeyActionTypes.Down)
+                        {
+                            _inputSim.Keyboard.KeyDown(_actionList[n].Key);
+                        }
+                        else if (_actionList[n].KeyActionType == KeyActionTypes.Up)
+                        {
+                            _inputSim.Keyboard.KeyUp(_actionList[n].Key);
+                        }
                     }
                     else if (_actionList[n] is MouseAction)
                     {

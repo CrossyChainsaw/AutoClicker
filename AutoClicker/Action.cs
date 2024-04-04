@@ -10,6 +10,7 @@ namespace AutoClicker
     internal class Action
     {
         public VirtualKeyCode Key { get; internal set; }
+        public KeyActionTypes KeyActionType { get; internal set; }
         public int Delay { get; internal set; }
         public Point Point { get; internal set; }
         public string Text { get; internal set; }
@@ -21,6 +22,10 @@ namespace AutoClicker
         public void SetKey(VirtualKeyCode key)
         {
             Key = key;
+        }
+        public void SetKeyType(KeyActionTypes keyType)
+        {
+            KeyActionType = keyType;
         }
         public void SetDelay(int delay)
         {
