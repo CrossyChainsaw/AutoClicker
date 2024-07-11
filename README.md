@@ -1,5 +1,5 @@
 # Auto Clicker
-Auto Clicker is an application wherein you can simulate multiple mouse presses in a certain order. This order can be repeated multiple times inside of the application.
+Auto Clicker is an application wherein you can simulate multiple mouse presses in a certain order. This order can be repeated multiple times inside of the application. Also can you simulate key presses which can be held down or just clicked. (also supports button combinations like CTRL+C / CTRL+V)
 
 ## Video of me using AutoClicker
 https://user-images.githubusercontent.com/74303221/174445252-d679ab56-0c1f-41cd-80f4-f5246094db82.mp4
