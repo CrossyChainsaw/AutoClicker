@@ -1,5 +1,5 @@
 # Auto Clicker
-Auto Clicker is an application wherein you can simulate multiple certain actions on a pc. Here are the key functionalities 
+Auto Clicker is an application wherein you can simulate certain actions on a pc. Here are the key functionalities 
 - Simulate a Mouse Click anywhere on the screen
 - Simulate certain Key presses
 - Simluate Key Combinations like CTRL+C / CTRL+V
