@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>1-8e1e13cb.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="1-8e1e13cb.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="bin\Debug\net6.0-windows\Resources\autoclicker_skin.png" />

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+MN58SVbDvuPYxkQSvdmj2yij+uomA8tzc/6Hi1unVlWw/F9kYTc3NDdQNDNwnJ7edDAc2D/vjbhQFdvSv3irA==",
+  "dgSpecHash": "P+5ZrQ66sapPOPbN/lPXqh7hL4GVJ4iV3NgVDJFut7ZzKDjKWKxMQfW0oGDB9Krz/ze3Ggdo4R2wc0LpmJDCeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kaan\\source\\repos\\C#\\_NotSemester7\\AutoClicker\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+  "projectFilePath": "C:\\Users\\Kaan\\source\\repos\\cs\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kaan\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
     "C:\\Users\\Kaan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
