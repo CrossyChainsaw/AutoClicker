@@ -38,19 +38,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kaan\\.nuget\\packages\\": {}
+    "C:\\Users\\thezo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kaan\\source\\repos\\cs\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+      "projectUniqueName": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
       "projectName": "AutoClicker",
-      "projectPath": "C:\\Users\\Kaan\\source\\repos\\cs\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
-      "packagesPath": "C:\\Users\\Kaan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaan\\source\\repos\\cs\\AutoClicker\\AutoClicker\\obj\\",
+      "projectPath": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+      "packagesPath": "C:\\Users\\thezo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kaan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thezo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -75,7 +80,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -100,19 +106,19 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.36, 6.0.36]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.36, 6.0.36]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.36, 6.0.36]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.36, 6.0.36]"
           }
         ],
         "frameworkReferences": {
@@ -123,7 +129,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   },

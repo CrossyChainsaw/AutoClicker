@@ -521,6 +521,10 @@ namespace AutoClicker
                     {
                         CreateGroupBox_KeyAction(item.k, item.d);
                     }
+                    else if (item.a is TextAction)
+                    {
+                        CreateGroupBox_TextAction(item.d);
+                    }
                 }
                 MessageBox.Show("DATA LOADED");
             }

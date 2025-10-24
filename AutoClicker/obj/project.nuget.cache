@@ -1,21 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "P+5ZrQ66sapPOPbN/lPXqh7hL4GVJ4iV3NgVDJFut7ZzKDjKWKxMQfW0oGDB9Krz/ze3Ggdo4R2wc0LpmJDCeA==",
+  "dgSpecHash": "k6u7tIthS90=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kaan\\source\\repos\\cs\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+  "projectFilePath": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Kaan\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
-    "C:\\Users\\Kaan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Kaan\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Kaan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
-    "C:\\Users\\Kaan\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
+    "C:\\Users\\thezo\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
+    "C:\\Users\\thezo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\thezo\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\thezo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\thezo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'InputSimulator 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "projectPath": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\thezo\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.csproj",
       "libraryId": "InputSimulator",
       "targetGraphs": [
         "net6.0-windows7.0"

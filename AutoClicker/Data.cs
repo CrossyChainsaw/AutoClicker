@@ -29,7 +29,7 @@ namespace AutoClicker
                 count++;
                 if (count == 5)
                 {
-                    data.Add(ReturnCorrectAction(singleDataLine[0], ConvertStringToKey(singleDataLine[1]), singleDataLine[2], singleDataLine[3], singleDataLine[4]));
+                    data.Add(ReturnCorrectAction(singleDataLine[0], ConvertStringToKey(singleDataLine[1]), singleDataLine[2], singleDataLine[3], singleDataLine[4], "Your text isnt saved sorry"));
                     singleDataLine.Clear();
                     count = 0;
                 }
@@ -50,7 +50,7 @@ namespace AutoClicker
                 count++;
                 if (count == 5)
                 {
-                    data.Add(ReturnCorrectAction(singleDataLine[0], ConvertStringToKey(singleDataLine[1]), singleDataLine[2], singleDataLine[3], singleDataLine[4]));
+                    data.Add(ReturnCorrectAction(singleDataLine[0], ConvertStringToKey(singleDataLine[1]), singleDataLine[2], singleDataLine[3], singleDataLine[4], "Your text isnt saved sorry"));
                     singleDataLine.Clear();
                     count = 0;
                 }
@@ -74,7 +74,7 @@ namespace AutoClicker
 
             return keything;
         }
-        static (Action a, VirtualKeyCode key, int d, int x, int y) ReturnCorrectAction(string a, VirtualKeyCode key, string d, string x, string y)
+        static (Action a, VirtualKeyCode key, int d, int x, int y) ReturnCorrectAction(string a, VirtualKeyCode key, string d, string x, string y, string t)
         {
             int delay = Convert.ToInt32(d);
             int X = Convert.ToInt32(x);
@@ -87,6 +87,10 @@ namespace AutoClicker
             else if (a == "AutoClicker.KeyAction")
             {
                 return (new KeyAction(VirtualKeyCode.CONTROL, 0, KeyActionTypes.Down), key, delay, X, Y);
+            }
+            else if (a == "AutoClicker.TextAction")
+            {
+                return (new TextAction(t, delay), key, delay, X, Y);
             }
             else 
             {
