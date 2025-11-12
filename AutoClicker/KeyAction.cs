@@ -28,7 +28,8 @@ namespace AutoClicker
             VirtualKeyCode.VK_V,
             VirtualKeyCode.SPACE,
             VirtualKeyCode.RETURN,
-            VirtualKeyCode.F2
+            VirtualKeyCode.F2,
+            VirtualKeyCode.LWIN
         };
 
         public KeyAction(VirtualKeyCode key, int delay, KeyActionTypes keyActionType)
